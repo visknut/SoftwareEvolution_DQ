@@ -7,13 +7,15 @@ import lang::java::jdt::m3::Core;
 
 public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
+public loc ltest = |project://Library|;
 
 public void main() {
-	init(smallsql);
+	init(ltest);
 }
 
 void init(loc l) {
-  createM3FromEclipseProject(l);
+  myModel = createM3FromEclipseProject(l);
+  iprintln(methods(myModel));
   println("Initialized project: <l>");
 } 
 
