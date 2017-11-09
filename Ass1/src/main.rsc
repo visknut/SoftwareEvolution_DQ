@@ -9,7 +9,7 @@ public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
 
 public void main() {
-	init(hsqldb);
+	init(smallsql);
 }
 
 void init(loc l) {
