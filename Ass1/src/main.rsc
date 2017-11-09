@@ -5,8 +5,8 @@ import List;
 import lang::java::m3::Core;
 import lang::java::jdt::m3::Core;
 
-public loc hsqldb = |project://SoftwareEvolution_DQ/hsqldb|;
-public loc smallsql = |project://SoftwareEvolution_DQ/smallsql|;
+public loc hsqldb = |project://SQLBig|;
+public loc smallsql = |project://smallsql|;
 
 public void main() {
 	init(hsqldb);
