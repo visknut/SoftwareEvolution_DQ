@@ -8,7 +8,6 @@ import IO;
 import util::Math;
 
 public int countModelLoc(loc file) = size(modelLoc(file));
-private list[str] splitText(str text) = [ s | s <- split("\n", text), /^\s*$/ !:= s ];
 
 void printVolume(M3 model) {
 	println(sum(mapper(toList(classes(model)), countModelLoc)));
@@ -17,8 +16,8 @@ void printVolume(M3 model) {
 public list[str] modelLoc(loc file) {
 	text = readFile(file);
 	textNoComments = removeComments(text);
-	textList = splitText(textNoComments);
-	return textList;
+	textInList = [ x | x <- split("\n", textNoComments), /^\s*$/ !:= x ]; // /^\s*$/ removes empty lines
+	return textInList;
 }
 
 private str removeComments(str text) {
