@@ -7,24 +7,13 @@ import String;
 import IO;
 import util::Math;
 
-public int countModelLoc(loc file) = size(modelLoc(file));
+import cleantext;
 
-void printSize(M3 model) {
-	println("Placeholder");
+public int countModelLoc(loc file) = size(cleanText(file));
+
+void printSize(M3 model, int maxUnitLength) {
+	methodsSizes = mapper(toList(methods(model)), countModelLoc);
+	methodsTooLarge = [ x | x <- methodsSizes, x > maxUnitLength];
+	UnitPercentage = (100 *  size(methodsTooLarge))/ size(methodsSizes);
+	println("<UnitPercentage>% of the units are over <maxUnitLength> lines long.");
 }
-
-//void printVolume(M3 model) {
-//	println(sum(mapper(toList(classes(model)), countModelLoc)));
-//}
-
-//public list[str] modelLoc(loc file) {
-//	text = readFile(file);
-//	textNoComments = removeComments(text);
-//	textInList = [ x | x <- split("\n", textNoComments), /^\s*$/ !:= x ]; // /^\s*$/ removes empty lines
-//	return textInList;
-//}
-//
-//private str removeComments(str text) {
-//	// Todo: some magic
-//	return text;
-//}

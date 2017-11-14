@@ -17,6 +17,9 @@ public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
 public loc libary = |project://Library|;
 
+/* Set the max length of a unit. */
+int maxUnitLength = 30;
+
 public void main() {
 	model = initModel(libary);
 	
@@ -24,7 +27,7 @@ public void main() {
 	printVolume(model);
 
 	println("Calculating Unit Size:");
-	printSize(model);
+	printSize(model, maxUnitLength);
 	
 	println("Calculating Unit complexity:");
 	printComplexity(model);
