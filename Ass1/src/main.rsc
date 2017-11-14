@@ -9,6 +9,9 @@ import lang::java::jdt::m3::Core;
 import lang::java::jdt::m3::AST;
 
 import volume;
+import size;
+import complexity;
+import duplication;
 
 public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
@@ -21,9 +24,16 @@ public void main() {
 	printVolume(model);
 
 	println("Calculating Unit Size:");
+	printSize(model);
+	
+	println("Calculating Unit complexity:");
+	printComplexity(model);
+	
+	println("Calculating dode duplication:");
+	printDuplication(model);
 }
 
 public M3 initModel(loc l) {
   myModel = createM3FromEclipseProject(l);
   return myModel;
-} 
+}
