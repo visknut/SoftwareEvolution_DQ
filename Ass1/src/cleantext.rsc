@@ -8,8 +8,10 @@ import IO;
 import util::Math;
 
 private str removeComments(str text) {
-	// Todo: some magic
-	return text;
+	return visit(text) {
+		case /\/\/.*/ => "" // SingleLine
+		case /\/\*.*?\*\//s => "" // MultiLine /s for single line matching regex flag
+	}
 }
 
 private list[str] removeEmptyLines(str text) {
