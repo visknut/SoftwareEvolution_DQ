@@ -11,9 +11,15 @@ import cleantext;
 
 public int countModelLoc(loc file) = size(cleanText(file));
 
-void printSize(M3 model, int maxUnitLength) {
+public int unitPercentage(list[int] methodsSizeCategory, list[int] methodsSizes) = (100 *  size(methodsSizeCategory))/ size(methodsSizes);
+
+public list[int] calculateUnitSize(M3 model, list[int] unitSizeInterval) {
 	methodsSizes = mapper(toList(methods(model)), countModelLoc);
-	methodsTooLarge = [ x | x <- methodsSizes, x > maxUnitLength];
-	UnitPercentage = (100 *  size(methodsTooLarge))/ size(methodsSizes);
-	println("<UnitPercentage>% of the units are over <maxUnitLength> lines long.");
+	
+	noRisk = unitPercentage([ x | x <- methodsSizes, unitSizeInterval[0] > x], methodsSizes);
+	moderateRisk = unitPercentage([ x | x <- methodsSizes, unitSizeInterval[0] <= x, x < unitSizeInterval[1]], methodsSizes);
+	highRisk = unitPercentage([ x | x <- methodsSizes, unitSizeInterval[1] <= x, x < unitSizeInterval[2]], methodsSizes);
+	veryHighRisk = unitPercentage([ x | x <- methodsSizes, x >= unitSizeInterval[2]], methodsSizes);
+	
+	return [noRisk, moderateRisk, highRisk, veryHighRisk];
 }

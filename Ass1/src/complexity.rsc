@@ -3,6 +3,7 @@ module complexity
 import lang::java::jdt::m3::Core;
 import List;
 import Set;
+import Type;
 import String;
 import IO;
 import util::Math;
@@ -30,10 +31,15 @@ int cyclomaticComplexity(MethodDec model) {
 	return result;
 }
 
-lrel[int cc, loc method] findComplexFiles(loc project) {
+lrel[int cc, loc method] findUnitComplexity(loc project, list[int] codeComplexityInterval) {
   result = [*maxCC(f) | /file(f) <- crawl(project), f.extension == "java"];	
   result = sort(result, bool (<int a, loc _>, <int b, loc _>) { return a < b; });
-  return result; //head(reverse(result), limit);
+  
+  unitComplexity = [];
+  
+  for(int n <- [0..(size(result))]) println("n = <result[n].cc>");
+     
+  return result; 
 }
 
 set[MethodDec] allMethods(loc file) = {m | /MethodDec m := parse(#start[CompilationUnit], file)};
