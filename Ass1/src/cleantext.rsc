@@ -15,7 +15,7 @@ public str removeComments(str text) {
 }
 
 public list[str] removeEmptyLines(str text) {
-	return [ x | x <- split("\n", text), /^\s*$/ !:= x ]; // /^\s*$/ removes empty lines
+	return [ trim(x) | x <- split("\n", text), /^\s*$/ !:= x ]; // /^\s*$/ removes empty lines
 }
 
 public list[str] cleanText(loc file) {

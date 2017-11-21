@@ -23,21 +23,21 @@ int maxUnitLength = 30;
 public void main() {
 	model = initModel(libary);
 	
-	println("Calculating Volume:");
-	linesOfCode = calculateVolume(model);
-	println(linesOfCode);
-
-	println("Calculating Unit Size:");
-	unitSize = calculateUnitSize(model, maxUnitLength);
-	println(unitSize);
+//	println("Calculating Volume:");
+//	linesOfCode = calculateVolume(model);
+//	println(linesOfCode);
+//
+//	println("Calculating Unit Size:");
+//	unitSize = calculateUnitSize(model, maxUnitLength);
+//	println(unitSize);
 	
 	//println("Calculating Unit complexity:");
 	//iprintln(findComplexFiles(|project://Library/|));
 	
-	//println("Calculating code duplication:");
-	//printDuplication(model);
+	println("Calculating code duplication:");
+	printDuplication(model);
 	
-	printReport(linesOfCode);
+	// printReport(linesOfCode);
 }
 
 public M3 initModel(loc l) {
