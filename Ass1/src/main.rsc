@@ -24,13 +24,13 @@ list[int] unitComplexityInterval = [10, 20, 50];
 public void main() {
 	model = initModel(libary);
 	
-//	println("Calculating Volume:");
-//	linesOfCode = calculateVolume(model);
-//	println(linesOfCode);
-//
-//	println("Calculating Unit Size with interval(<unitSizeInterval>):");
-//	unitSize = calculateUnitSize(model, unitSizeInterval);
-//	println(unitSize);
+	println("Calculating Volume:");
+	linesOfCode = calculateVolume(model);
+	println(linesOfCode);
+
+	println("Calculating Unit Size with interval(<unitSizeInterval>):");
+	unitSize = calculateUnitSize(model, unitSizeInterval);
+	println(unitSize);
 	
 	println("Calculating Unit complexity:");
 	unitComplexity = findUnitComplexity(libary, unitComplexityInterval);

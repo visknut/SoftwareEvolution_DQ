@@ -13,6 +13,17 @@ import ParseTree;
 import util::FileSystem;
 import lang::java::\syntax::Disambiguate;
 
+import cleantext;
+
+
+// if
+// case
+// ?
+// &&, ||
+// while
+// for
+// catch
+
 // Code from rascasl website, metrics example
 int cyclomaticComplexity(MethodDec model) {
 	result = 1;
