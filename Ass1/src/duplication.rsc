@@ -6,8 +6,15 @@ import Set;
 import String;
 import IO;
 import util::Math;
+import lang::java::\syntax::Java15;
+import Exception;
+import ParseTree;
+import util::FileSystem;
+import lang::java::\syntax::Disambiguate;
 
 
 void printDuplication(M3 model) {
-	println("-Placeholder-");
+	x = [ f | /file(f) <- crawl(|project://Library|), f.extension == "java"];
+	// Code block is at least 6 loc
+	iprintln(x);
 }

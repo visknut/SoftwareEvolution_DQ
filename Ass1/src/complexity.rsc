@@ -39,4 +39,3 @@ lrel[int cc, loc method] findComplexFiles(loc project) {
 set[MethodDec] allMethods(loc file) = {m | /MethodDec m := parse(#start[CompilationUnit], file)};
 
 lrel[int cc, loc method] maxCC(loc file) = [<cyclomaticComplexity(m), m@\loc> | m <- allMethods(file)];
-  
