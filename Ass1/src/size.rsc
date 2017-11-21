@@ -11,9 +11,10 @@ import cleantext;
 
 public int countModelLoc(loc file) = size(cleanText(file));
 
-void printSize(M3 model, int maxUnitLength) {
+int calculateUnitSize(M3 model, int maxUnitLength) {
 	methodsSizes = mapper(toList(methods(model)), countModelLoc);
 	methodsTooLarge = [ x | x <- methodsSizes, x > maxUnitLength];
 	UnitPercentage = (100 *  size(methodsTooLarge))/ size(methodsSizes);
 	println("<UnitPercentage>% of the units are over <maxUnitLength> lines long.");
+	return UnitPercentage;
 }

@@ -24,19 +24,40 @@ public void main() {
 	model = initModel(libary);
 	
 	println("Calculating Volume:");
-	printVolume(model);
+	linesOfCode = calculateVolume(model);
+	println(linesOfCode);
 
 	println("Calculating Unit Size:");
-	printSize(model, maxUnitLength);
+	unitSize = calculateUnitSize(model, maxUnitLength);
+	println(unitSize);
 	
-	println("Calculating Unit complexity:");
-	printComplexity(model);
+	//println("Calculating Unit complexity:");
+	//iprintln(findComplexFiles(|project://Library/|));
 	
-	println("Calculating dode duplication:");
-	printDuplication(model);
+	//println("Calculating code duplication:");
+	//printDuplication(model);
+	
+	printReport(linesOfCode);
 }
 
 public M3 initModel(loc l) {
   myModel = createM3FromEclipseProject(l);
   return myModel;
+}
+
+void printReport(int linesOfCode){
+	println("-------------------");
+	println("|Metric      |Rank|");
+	println("|-----------------|");
+	println("|Volume      | <rankVolume(linesOfCode)> |");
+	println("|Unit Size   | <rankVolume(linesOfCode)> |");	
+	println("-------------------");	
+}
+
+public str rankVolume(int linesOfCode){
+	if(linesOfCode < 66000) return "++";
+	if(linesOfCode < 246000) return "+";
+	if(linesOfCode < 665000) return "o";
+	if(linesOfCode < 1310000) return "-"; 
+	else return "--";
 }
