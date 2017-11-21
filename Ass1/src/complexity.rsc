@@ -30,10 +30,10 @@ int cyclomaticComplexity(MethodDec model) {
 	return result;
 }
 
-lrel[int cc, loc method] findComplexFiles(loc project, int limit = 10) {
+lrel[int cc, loc method] findComplexFiles(loc project) {
   result = [*maxCC(f) | /file(f) <- crawl(project), f.extension == "java"];	
   result = sort(result, bool (<int a, loc _>, <int b, loc _>) { return a < b; });
-  return head(reverse(result), limit);
+  return result; //head(reverse(result), limit);
 }
 
 set[MethodDec] allMethods(loc file) = {m | /MethodDec m := parse(#start[CompilationUnit], file)};
