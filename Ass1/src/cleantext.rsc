@@ -7,20 +7,13 @@ import String;
 import IO;
 import util::Math;
 
-public str removeComments(str text) {
-	return visit(text) {
-		case /\/\/.*/ => "" // SingleLine
-		case /\/\*.*?\*\//s => "" // MultiLine /s for single line matching regex flag
-	}
-}
-
-public list[str] removeEmptyLines(str text) {
-	return [ trim(x) | x <- split("\n", text), /^\s*$/ !:= x ]; // /^\s*$/ removes empty lines
-}
-
 public list[str] cleanText(loc file) {
 	text = readFile(file);
-	textNoComments = removeComments(text);
-	textInList = removeEmptyLines(textNoComments);
+	textNoComments = visit(text) {
+		case /\/\/.*/ => "" // SingleLine
+		case /\/\*.*?\*\//s => "" // MultiLine /s for single line matching regex flag
+	};
+	
+	textInList = [ trim(x) | x <- split("\n", textNoComments), /^\s*$/ !:= x ]; // /^\s*$/ select white
 	return textInList;
 }
