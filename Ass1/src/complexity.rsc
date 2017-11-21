@@ -48,7 +48,7 @@ lrel[int cc, loc method] findUnitComplexity(loc project, list[int] codeComplexit
   
   unitComplexity = [];
   
-  for(int n <- [0..(size(result))]) println("n = <result[n].cc>");
+  for(int n <- [0..(size(result))]) println("n = <result[n].cc>"); //push(result[n].cc, unitComplexity)
      
   return result; 
 }
