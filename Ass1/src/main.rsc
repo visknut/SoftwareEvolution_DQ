@@ -30,9 +30,9 @@ public void main() {
 	printSize(model, maxUnitLength);
 	
 	println("Calculating Unit complexity:");
-	printComplexity(model);
+	iprintln(findComplexFiles(|project://Library/|));
 	
-	println("Calculating dode duplication:");
+	println("Calculating code duplication:");
 	printDuplication(model);
 }
 
