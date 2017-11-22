@@ -7,6 +7,7 @@ import util::ValueUI;
 import lang::java::m3::Core;
 import lang::java::jdt::m3::Core;
 import lang::java::jdt::m3::AST;
+import ListRelation;
 
 import volume;
 import size;
@@ -36,23 +37,33 @@ public void main() {
 	println(" LOC");
 	printTimeStep(startTime);
 	
-//	println("Calculating Unit Size with interval(<unitSizeInterval>):");
-//	unitSize = calculateUnitSize(model, unitSizeInterval);
-//	println(unitSize);
-//	printTimeStep(startTime);
-//	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
-//	unitComplexity = findUnitComplexity(project, unitComplexityInterval);
-//
-//	println(unitComplexity);
-//  printTimeStep(startTime);
+	println("Calculating Unit Size with interval(<unitSizeInterval>):");
+	unitSize = calculateUnitSize(model, unitSizeInterval);
+	println(unitSize);
+	printTimeStep(startTime);
+	
+	
+	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
+	unitComplexity = findUnitComplexity(project, unitComplexityInterval);
+	
+	println(size(unitComplexity));
+	
+	//b = size(unitComplexity);
+	
+	//y = [];
+	//n = 0;
+	//while (n < (b/2)) {
+	//	if(x < 11) y + x[(b/2)+1];
+	//	n += 1;
+	//}
+	//println(y);
 
 	println("Calculating code duplication: ");
 	print(linesOfCode / printDuplication(model) * 100);
 	println("% of the code.");
 	printTimeStep(startTime);
 	
-	//printReport(linesOfCode, unitSize, unitComplexity);
-	
+	printReport(linesOfCode, unitSize, unitComplexity);
 }
 
 public M3 initModel(loc l) {
@@ -60,7 +71,7 @@ public M3 initModel(loc l) {
   return myModel;
 }
 
-void printReport(int linesOfCode, int unitSize, int unitComplexity){
+void printReport(int linesOfCode, list[int] unitSize, list[int] unitComplexity){
 	println("-----------------------");
 	println("|Metric          |Rank|");
 	println("|---------------------|");
@@ -78,7 +89,12 @@ public str rankVolume(int linesOfCode){
 	else return "--";
 }
 
-public str rankUnitSize(int UnitSize){
+public str rankUnitSize(list[int] UnitSize){
+	
+	return "Foo";
+}
+
+public str rankUnitComplexity(list[int] unitComplexity){
 	return "Foo";
 }
 

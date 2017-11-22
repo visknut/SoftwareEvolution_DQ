@@ -22,7 +22,7 @@ int printDuplication(M3 model) {
 	/* Remove any files that are to small to be relevant. */
 	fileList = [ x | x <- fileList, size(x) > 6];
 	/* Remove lines with only a bracket, because they cause the scan to find unrelevant duplications. */
-	//fileList = mapper(fileList, removeBrackets);
+	fileList = mapper(fileList, removeBrackets);
 	
 	duplicateLines = 0;
 	
