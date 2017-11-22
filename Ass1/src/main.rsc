@@ -1,7 +1,7 @@
 module main
 
 import IO;
-import List;
+
 import Set; 
 import util::ValueUI;
 import lang::java::m3::Core;
@@ -15,15 +15,17 @@ import duplication;
 
 public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
-public loc libary = |project://Library|;
+public loc library = |project://Library|;
 
 /* Set the interval for unit size measurement */
 list[int] unitSizeInterval = [15, 30, 60];
 list[int] unitComplexityInterval = [10, 20, 50];
 
 public void main() {
+	project = smallsql;
+
 	println("Loading code");
-	model = initModel(smallsql);
+	model = initModel(project);
 	println(model);
 	
 	println("Calculating Volume:");
@@ -35,7 +37,7 @@ public void main() {
 	println(unitSize);
 	
 	println("Calculating Unit complexity:");
-	unitComplexity = findUnitComplexity(libary, unitComplexityInterval);
+	unitComplexity = findUnitComplexity(project, unitComplexityInterval);
 	println(unitComplexity);
 	
 	println("Calculating code duplication:");
