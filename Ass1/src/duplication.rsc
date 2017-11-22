@@ -23,6 +23,8 @@ void printDuplication(M3 model) {
 	while (size(cleanMethods) > 1) {
 		checkMethod = head(cleanMethods);
 		cleanMethods = drop(1, cleanMethods);
+		cleanMethods = [ x | x <- cleanMethods, size(x) > 6];
+		cleanMethods = [ x | x <- cleanMethods, size(x) > 6];
 		duplicateLines += compareWithAll(checkMethod, cleanMethods);
 		lines += size(checkMethod);
 	}
@@ -32,6 +34,7 @@ void printDuplication(M3 model) {
 
 /* Compare a method with a list of methods. */
 int compareWithAll(list[str] method, list[list[str]] methods) {
+	print(".");
 	duplicateLines = 0;
 	for(list [str] comparedMethod <- methods) {
 		newDuplicateLines = compareMethods(method, comparedMethod);
@@ -43,7 +46,7 @@ int compareWithAll(list[str] method, list[list[str]] methods) {
 }
 
 /* Compare two method to find the number of duplicate lines. */
-int compareMethods(method, comparedMethod) {
+int compareMethods(list[str] method, list[str] comparedMethod) {
 	duplicateLines = 0;
 	for(int i <- [0 .. size(comparedMethod)]) {
 		for(int j <- [0 .. size(method)]) {
@@ -66,7 +69,7 @@ int compareMethods(method, comparedMethod) {
 }
 
 /* Compare a subseuqent set of lines until they don't match */
-int checkLines(method, i, comparedMethod, j) {
+int checkLines(list[str] method, int i, list[str] comparedMethod, int j) {
 	lines = 0;
 	line = "";
 	comparedLine = "";

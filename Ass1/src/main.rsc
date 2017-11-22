@@ -22,7 +22,9 @@ list[int] unitSizeInterval = [15, 30, 60];
 list[int] unitComplexityInterval = [10, 20, 50];
 
 public void main() {
-	model = initModel(libary);
+	println("Loading code");
+	model = initModel(smallsql);
+	println(model);
 	
 	println("Calculating Volume:");
 	linesOfCode = calculateVolume(model);
