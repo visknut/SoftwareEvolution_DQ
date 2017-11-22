@@ -15,31 +15,31 @@ import duplication;
 
 public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
-public loc libary = |project://Library|;
+public loc library = |project://Library|;
 
 /* Set the interval for unit size measurement */
 list[int] unitSizeInterval = [15, 30, 60];
 list[int] unitComplexityInterval = [10, 20, 50];
 
 public void main() {
-	model = initModel(libary);
+	model = initModel(library);
 	
 	println("Calculating Volume:");
 	linesOfCode = calculateVolume(model);
 	println(linesOfCode);
-
+	
 	println("Calculating Unit Size with interval(<unitSizeInterval>):");
 	unitSize = calculateUnitSize(model, unitSizeInterval);
 	println(unitSize);
 	
-	println("Calculating Unit complexity:");
-	unitComplexity = findUnitComplexity(libary, unitComplexityInterval);
+	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
+	unitComplexity = findUnitComplexity(library, unitComplexityInterval);
 	println(unitComplexity);
 	
-	println("Calculating code duplication:");
-	printDuplication(model);
+	//println("Calculating code duplication:");
+	//printDuplication(model);
 	
-	// printReport(linesOfCode);
+	 //printReport(linesOfCode, unitSize, unitComplexity);
 }
 
 public M3 initModel(loc l) {
@@ -47,13 +47,14 @@ public M3 initModel(loc l) {
   return myModel;
 }
 
-void printReport(int linesOfCode){
-	println("-------------------");
-	println("|Metric      |Rank|");
-	println("|-----------------|");
-	println("|Volume      | <rankVolume(linesOfCode)> |");
-	println("|Unit Size   | <rankUnitSize(linesOfCode)>|");	
-	println("-------------------");	
+void printReport(int linesOfCode, int unitSize, int unitComplexity){
+	println("-----------------------");
+	println("|Metric          |Rank|");
+	println("|---------------------|");
+	println("|Volume          | <rankVolume(linesOfCode)> |");
+	println("|Unit Size       | <rankUnitSize(unitSize)>|");	
+	println("|Unit Complexity | <rankUnitComplexity(unitComplexity)>|");	
+	println("-----------------------");	
 }
 
 public str rankVolume(int linesOfCode){

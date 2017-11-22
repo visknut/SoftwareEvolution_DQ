@@ -25,6 +25,7 @@ import cleantext;
 // catch
 
 // Code from rascasl website, metrics example
+// http://www.rascal-mpl.org/#_Metrics
 int cyclomaticComplexity(MethodDec model) {
 	result = 1;
 	visit (model) {
@@ -42,17 +43,10 @@ int cyclomaticComplexity(MethodDec model) {
 	return result;
 }
 
-lrel[int cc, loc method] findUnitComplexity(loc project, list[int] codeComplexityInterval) {
-  result = [*maxCC(f) | /file(f) <- crawl(project), f.extension == "java"];	
-  result = sort(result, bool (<int a, loc _>, <int b, loc _>) { return a < b; });
-  
-  unitComplexity = [];
-  
-  for(int n <- [0..(size(result))]) println("n = <result[n].cc>"); //push(result[n].cc, unitComplexity)
-     
-  return result; 
+list[int cc] findUnitComplexity(loc project, list[int] codeComplexityInterval) {
+  return [*maxCC(f) | /file(f) <- crawl(project), f.extension == "java"];; 
 }
 
 set[MethodDec] allMethods(loc file) = {m | /MethodDec m := parse(#start[CompilationUnit], file)};
 
-lrel[int cc, loc method] maxCC(loc file) = [<cyclomaticComplexity(m), m@\loc> | m <- allMethods(file)];
+list[int cc] maxCC(loc file) = [cyclomaticComplexity(m) | m <- allMethods(file)];
