@@ -22,18 +22,20 @@ list[int] unitSizeInterval = [15, 30, 60];
 list[int] unitComplexityInterval = [10, 20, 50];
 
 public void main() {
-
+	
+	
+	
 	println("Loading code");
 	model = initModel(smallsql);
 	println(model);
 	
-	println("Calculating Volume:");
-	linesOfCode = calculateVolume(model);
-	println(linesOfCode);
-	
-	println("Calculating Unit Size with interval(<unitSizeInterval>):");
-	unitSize = calculateUnitSize(model, unitSizeInterval);
-	println(unitSize);
+	//println("Calculating Volume:");
+	//linesOfCode = calculateVolume(model);
+	//println(linesOfCode);
+	//
+	//println("Calculating Unit Size with interval(<unitSizeInterval>):");
+	//unitSize = calculateUnitSize(model, unitSizeInterval);
+	//println(unitSize);
 	
 	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
 	unitComplexity = findUnitComplexity(library, unitComplexityInterval);
@@ -70,4 +72,12 @@ public str rankVolume(int linesOfCode){
 
 public str rankUnitSize(int UnitSize){
 	return "Foo";
+}
+
+public str rankUnitComplexity(int unitComplexity){
+	if(linesOfCode < 66000) return "++";
+	if(linesOfCode < 246000) return "+";
+	if(linesOfCode < 665000) return "o";
+	if(linesOfCode < 1310000) return "-"; 
+	else return "--";
 }
