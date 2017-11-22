@@ -20,9 +20,7 @@ import cleantext;
 int cyclomaticComplexity(MethodDec model) {
 	result = 1;
 	visit (model) {
-		case (Stm)`<Expr _> ? <Stm _> : <Stm _> `: result += 1;
-		case (Stm)`<Expr _> && <Expr _> `: result += 1;
-		case (Stm)`<Expr _> || <Expr _> `: result += 1;
+		//case (Stm)`<Expr _> ? <Stm _> : <Stm _>` : result += 1;
 		case (Stm)`do <Stm _> while (<Expr _>);`: result += 1;
 		case (Stm)`while (<Expr _>) <Stm _>`: result += 1;
 		case (Stm)`if (<Expr _>) <Stm _>`: result +=1;
@@ -33,6 +31,8 @@ int cyclomaticComplexity(MethodDec model) {
 		//case (Stm)`switch (<Expr _> ) <SwitchBlock _>`: result += 1;
 		case (SwitchLabel)`case <Expr _> :` : result += 1;
 		case (CatchClause)`catch (<FormalParam _>) <Block _>` : result += 1;
+		case (Expr)`<Expr _> && <Expr _>`: result += 1;
+		case (Expr)`<Expr _> || <Expr _>`: result += 1;
 	}
 	return result;
 }

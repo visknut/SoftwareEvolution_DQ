@@ -1,7 +1,7 @@
 module main
 
 import IO;
-import List;
+
 import Set; 
 import util::ValueUI;
 import lang::java::m3::Core;
@@ -26,7 +26,7 @@ public void main() {
 	
 	
 	println("Loading code");
-	model = initModel(smallsql);
+	model = initModel(project);
 	println(model);
 	
 	//println("Calculating Volume:");
@@ -38,7 +38,8 @@ public void main() {
 	//println(unitSize);
 	
 	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
-	unitComplexity = findUnitComplexity(library, unitComplexityInterval);
+	unitComplexity = findUnitComplexity(project, unitComplexityInterval);
+
 	println(unitComplexity);
 	
 	//println("Calculating code duplication:");
