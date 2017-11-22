@@ -7,6 +7,7 @@ import util::ValueUI;
 import lang::java::m3::Core;
 import lang::java::jdt::m3::Core;
 import lang::java::jdt::m3::AST;
+import ListRelation;
 
 import volume;
 import size;
@@ -22,12 +23,10 @@ list[int] unitSizeInterval = [15, 30, 60];
 list[int] unitComplexityInterval = [10, 20, 50];
 
 public void main() {
-	
-	
-	
+		
 	println("Loading code");
+	project = library;
 	model = initModel(project);
-	println(model);
 	
 	//println("Calculating Volume:");
 	//linesOfCode = calculateVolume(model);
@@ -39,9 +38,18 @@ public void main() {
 	
 	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
 	unitComplexity = findUnitComplexity(project, unitComplexityInterval);
-
-	println(unitComplexity);
 	
+	println(size(unitComplexity));
+	
+	//b = size(unitComplexity);
+	
+	//y = [];
+	//n = 0;
+	//while (n < (b/2)) {
+	//	if(x < 11) y + x[(b/2)+1];
+	//	n += 1;
+	//}
+	//println(y);
 	//println("Calculating code duplication:");
 	//printDuplication(model);
 	
@@ -53,7 +61,7 @@ public M3 initModel(loc l) {
   return myModel;
 }
 
-void printReport(int linesOfCode, int unitSize, int unitComplexity){
+void printReport(int linesOfCode, list[int] unitSize, list[int] unitComplexity){
 	println("-----------------------");
 	println("|Metric          |Rank|");
 	println("|---------------------|");
@@ -71,14 +79,11 @@ public str rankVolume(int linesOfCode){
 	else return "--";
 }
 
-public str rankUnitSize(int UnitSize){
+public str rankUnitSize(list[int] UnitSize){
+	
 	return "Foo";
 }
 
-public str rankUnitComplexity(int unitComplexity){
-	if(linesOfCode < 66000) return "++";
-	if(linesOfCode < 246000) return "+";
-	if(linesOfCode < 665000) return "o";
-	if(linesOfCode < 1310000) return "-"; 
-	else return "--";
+public str rankUnitComplexity(list[int] unitComplexity){
+	return "Foo";
 }

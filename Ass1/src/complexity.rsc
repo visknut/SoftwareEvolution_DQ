@@ -37,10 +37,11 @@ int cyclomaticComplexity(MethodDec model) {
 	return result;
 }
 
-list[int cc] findUnitComplexity(loc project, list[int] codeComplexityInterval) {
-  return [*maxCC(f) | /file(f) <- crawl(project), f.extension == "java"];; 
+list[int codeComplexity] findUnitComplexity(loc project, list[int] codeComplexityInterval) {
+  return [*codeComplexity(f) | /file(f) <- crawl(project), f.extension == "java"] + [*codeComplexityVolume(f) | /file(f) <- crawl(project), f.extension == "java"];
 }
 
 set[MethodDec] allMethods(loc file) = {m | /MethodDec m := parse(#start[CompilationUnit], file)};
 
-list[int cc] maxCC(loc file) = [cyclomaticComplexity(m) | m <- allMethods(file)];
+list[int cc] codeComplexity(loc file) = [cyclomaticComplexity(m) | m <- allMethods(file)];
+list[int methodVolume] codeComplexityVolume(loc file) = [size(cleanText(m@\loc)) | m <- allMethods(file)];
