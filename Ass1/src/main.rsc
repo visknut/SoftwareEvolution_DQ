@@ -12,6 +12,7 @@ import volume;
 import size;
 import complexity;
 import duplication;
+import DateTime;
 
 public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
@@ -23,28 +24,35 @@ list[int] unitComplexityInterval = [10, 20, 50];
 
 public void main() {
 	project = smallsql;
+	startTime = now();
 
-	println("Loading code");
+	println("Loading code: ");
 	model = initModel(project);
-	println(model);
+	printTimeStep(startTime);
 	
-	println("Calculating Volume:");
+	print("Calculating Volume:");
 	linesOfCode = calculateVolume(model);
-	println(linesOfCode);
+	print(linesOfCode);
+	println(" LOC");
+	printTimeStep(startTime);
 	
-	println("Calculating Unit Size with interval(<unitSizeInterval>):");
-	unitSize = calculateUnitSize(model, unitSizeInterval);
-	println(unitSize);
-	
-	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
-	unitComplexity = findUnitComplexity(project, unitComplexityInterval);
+//	println("Calculating Unit Size with interval(<unitSizeInterval>):");
+//	unitSize = calculateUnitSize(model, unitSizeInterval);
+//	println(unitSize);
+//	printTimeStep(startTime);
+//	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
+//	unitComplexity = findUnitComplexity(project, unitComplexityInterval);
+//
+//	println(unitComplexity);
+//  printTimeStep(startTime);
 
-	println(unitComplexity);
+	println("Calculating code duplication: ");
+	print(linesOfCode / printDuplication(model) * 100);
+	println("% of the code.");
+	printTimeStep(startTime);
 	
-	//println("Calculating code duplication:");
-	//printDuplication(model);
+	//printReport(linesOfCode, unitSize, unitComplexity);
 	
-	 //printReport(linesOfCode, unitSize, unitComplexity);
 }
 
 public M3 initModel(loc l) {
@@ -72,4 +80,20 @@ public str rankVolume(int linesOfCode){
 
 public str rankUnitSize(int UnitSize){
 	return "Foo";
+}
+
+public void printTimeStep(datetime startTime) {
+	print("This step took: ");
+	if ((now() - startTime).hours > 0) {
+		print((now() - startTime).hours);
+		print("h");
+	}
+	if ((now() - startTime).minutes > 0) {
+		print((now() - startTime).minutes);
+		print("m");
+	}
+	print((now() - startTime).seconds);
+	print("s");
+	print((now() - startTime).milliseconds);
+	println("ms.\n");
 }
