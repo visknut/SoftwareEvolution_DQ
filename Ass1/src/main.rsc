@@ -31,19 +31,20 @@ public void main() {
 	println("Calculating Volume:");
 	linesOfCode = calculateVolume(model);
 	println(linesOfCode);
-
+	
 	println("Calculating Unit Size with interval(<unitSizeInterval>):");
 	unitSize = calculateUnitSize(model, unitSizeInterval);
 	println(unitSize);
 	
-	println("Calculating Unit complexity:");
+	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
 	unitComplexity = findUnitComplexity(project, unitComplexityInterval);
+
 	println(unitComplexity);
 	
-	println("Calculating code duplication:");
-	printDuplication(model);
+	//println("Calculating code duplication:");
+	//printDuplication(model);
 	
-	// printReport(linesOfCode);
+	 //printReport(linesOfCode, unitSize, unitComplexity);
 }
 
 public M3 initModel(loc l) {
@@ -51,13 +52,14 @@ public M3 initModel(loc l) {
   return myModel;
 }
 
-void printReport(int linesOfCode){
-	println("-------------------");
-	println("|Metric      |Rank|");
-	println("|-----------------|");
-	println("|Volume      | <rankVolume(linesOfCode)> |");
-	println("|Unit Size   | <rankUnitSize(linesOfCode)>|");	
-	println("-------------------");	
+void printReport(int linesOfCode, int unitSize, int unitComplexity){
+	println("-----------------------");
+	println("|Metric          |Rank|");
+	println("|---------------------|");
+	println("|Volume          | <rankVolume(linesOfCode)> |");
+	println("|Unit Size       | <rankUnitSize(unitSize)>|");	
+	println("|Unit Complexity | <rankUnitComplexity(unitComplexity)>|");	
+	println("-----------------------");	
 }
 
 public str rankVolume(int linesOfCode){
