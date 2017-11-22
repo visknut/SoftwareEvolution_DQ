@@ -9,8 +9,11 @@ import util::Math;
 
 public list[str] cleanText(loc file) {
 	text = readFile(file);
+	
 	textNoComments = visit(text) {
-		case /\/\*.*?\*\//s => "" // MultiLine /s for single line matching regex flag
+		case /\/\*.*?\*\//s => "" // MultiLine /s for single line matching regex flag	
+	};
+	textNoComments = visit(textNoComments) {
 		case /\/\/.*/ => "" // SingleLine		
 	};
 	

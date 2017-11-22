@@ -18,7 +18,7 @@ import cleantext;
 /* Take every method and compare to all the other methods once. */
 int printDuplication(M3 model) {
 	/* Remove empty lines and comments. */
-	fileList = mapper(toList(methods(model)), cleanText);
+	fileList = mapper(toList(files(model)), cleanText);
 	/* Remove any files that are to small to be relevant. */
 	fileList = [ x | x <- fileList, size(x) > 6];
 	/* Remove lines with only a bracket, because they cause the scan to find unrelevant duplications. */

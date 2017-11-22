@@ -2,102 +2,99 @@ module main
 
 import IO;
 
-import Set; 
-import util::ValueUI;
+import Set;
 import lang::java::m3::Core;
 import lang::java::jdt::m3::Core;
-import lang::java::jdt::m3::AST;
-import ListRelation;
+import DateTime;
 
 import volume;
 import size;
+import List;
 import complexity;
 import duplication;
-import DateTime;
+import ranking;
 
 public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
 public loc library = |project://Library|;
+
+/* Choose the location of the project you want to test. */
+public loc project = library;
 
 /* Set the interval for unit size measurement */
 list[int] unitSizeInterval = [15, 30, 60];
 list[int] unitComplexityInterval = [10, 20, 50];
 
 public void main() {
-	project = smallsql;
-	startTime = now();
+	/* Declare all variables in case you don't want to test for all of the metrics. */
+	linesOfCode = 0;
+	unitSize = [0.0, 0.0, 0.0, 0.0];
+	complexity = [0.0,0.0,0.0];
+	duplication = 0;
 
-	println("Loading code: ");
+	/* Calculate the metrics. */
 	model = initModel(project);
-	printTimeStep(startTime);
+	linesOfCode = startVolume(model);
+	unitSize = startUnitSize(model);
+	complexity = startComplexity(project, linesOfCode);
+	duplication = startDuplication(model, linesOfCode);
 	
-	print("Calculating Volume:");
+	/* Print the results. */
+	printReport(linesOfCode, unitSize, complexity, duplication);
+}
+
+/* Create m3 model */
+public M3 initModel(loc l) {
+	println("Loading code.");
+	startTime = now();
+  	myModel = createM3FromEclipseProject(l);
+  	printTimeStep(startTime);
+  	return myModel;
+}
+
+/* Calculate volume. */
+int startVolume(M3 model) {
+	print("Calculating Volume: ");
+	startTime = now();
 	linesOfCode = calculateVolume(model);
 	print(linesOfCode);
 	println(" LOC");
 	printTimeStep(startTime);
-	
-	println("Calculating Unit Size with interval(<unitSizeInterval>):");
+	return linesOfCode;
+}
+
+/* Calculate unit size. */
+list[real] startUnitSize(M3 model) {
+	println("Calculating Unit Size with interval(<unitSizeInterval>): ");
+	startTime = now();
 	unitSize = calculateUnitSize(model, unitSizeInterval);
 	println(unitSize);
 	printTimeStep(startTime);
-	
-	
-	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
-	unitComplexity = findUnitComplexity(project, unitComplexityInterval);
-	
-	println(size(unitComplexity));
-	
-	//b = size(unitComplexity);
-	
-	//y = [];
-	//n = 0;
-	//while (n < (b/2)) {
-	//	if(x < 11) y + x[(b/2)+1];
-	//	n += 1;
-	//}
-	//println(y);
+	return unitSize;
+}
 
-	println("Calculating code duplication: ");
-	print(linesOfCode / printDuplication(model) * 100);
+/* Calculate complexity. */
+list[real] startComplexity(loc project, int linesOfCode) {
+	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
+	startTime = now();
+	complexity = complexityBins(project, unitComplexityInterval, linesOfCode);
+	println("Moderate: <complexity[0]>% | High: <complexity[1]>% | Very high <complexity[2]>%.");
+	printTimeStep(startTime);
+	return complexity;
+}
+
+/* Calculate duplication. */
+int startDuplication(M3 model, int linesOfCode) {
+	print("Calculating code duplication: ");
+	startTime = now();
+	duplication = linesOfCode / printDuplication(model) * 100;
+	print(duplication);
 	println("% of the code.");
 	printTimeStep(startTime);
-	
-	printReport(linesOfCode, unitSize, unitComplexity);
+	return duplication;
 }
 
-public M3 initModel(loc l) {
-  myModel = createM3FromEclipseProject(l);
-  return myModel;
-}
-
-void printReport(int linesOfCode, list[int] unitSize, list[int] unitComplexity){
-	println("-----------------------");
-	println("|Metric          |Rank|");
-	println("|---------------------|");
-	println("|Volume          | <rankVolume(linesOfCode)> |");
-	println("|Unit Size       | <rankUnitSize(unitSize)>|");	
-	println("|Unit Complexity | <rankUnitComplexity(unitComplexity)>|");	
-	println("-----------------------");	
-}
-
-public str rankVolume(int linesOfCode){
-	if(linesOfCode < 66000) return "++";
-	if(linesOfCode < 246000) return "+";
-	if(linesOfCode < 665000) return "o";
-	if(linesOfCode < 1310000) return "-"; 
-	else return "--";
-}
-
-public str rankUnitSize(list[int] UnitSize){
-	
-	return "Foo";
-}
-
-public str rankUnitComplexity(list[int] unitComplexity){
-	return "Foo";
-}
-
+/* Print how long a step took */
 public void printTimeStep(datetime startTime) {
 	print("This step took: ");
 	if ((now() - startTime).hours > 0) {
