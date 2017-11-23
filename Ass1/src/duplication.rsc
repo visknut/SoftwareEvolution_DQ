@@ -3,15 +3,9 @@ module duplication
 import lang::java::jdt::m3::Core;
 import analysis::m3::Core;
 import List;
-import Set;
 import String;
 import IO;
-import util::Math;
-import lang::java::\syntax::Java15;
-import Exception;
-import ParseTree;
-import util::FileSystem;
-import lang::java::\syntax::Disambiguate;
+import Set;
 
 import cleantext;
 
@@ -22,7 +16,7 @@ int printDuplication(M3 model) {
 	/* Remove any files that are to small to be relevant. */
 	fileList = [ x | x <- fileList, size(x) > 6];
 	/* Remove lines with only a bracket, because they cause the scan to find unrelevant duplications. */
-	fileList = mapper(fileList, removeBrackets);
+	//fileList = mapper(fileList, removeBrackets);
 	
 	duplicateLines = 0;
 	
@@ -37,9 +31,7 @@ int printDuplication(M3 model) {
 int checkDuplactesFile(list[str] file, list[list[str]] fileList) {
 	duplicateLines = 0;	
 	for (list[str] comparedFile <- fileList) {
-		if (comparedFile != file) {
-			duplicateLines += compareFiles(file, comparedFile);
-		}
+		duplicateLines += compareFiles(file, comparedFile);
 	}
 	//if (duplicateLines > 0) {println(duplicateLines);}
 	return duplicateLines;

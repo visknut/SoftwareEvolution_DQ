@@ -2,7 +2,7 @@ module ranking
 
 import IO;
 
-public void printReport(int linesOfCode, list[real] unitSize, list[real] unitComplexity, int duplication) {
+public void printReport(int linesOfCode, list[real] unitSize, list[real] unitComplexity, real duplication) {
 	println("-----------------------");
 	println("|Metric          |Rank|");
 	println("|---------------------|");
@@ -37,10 +37,10 @@ str rankUnitComplexity(list[real] unitComplexity){
 	return "++";
 }
 
-str rankDuplication(int duplication){
-	if(duplication < 3) return "++";
-	if(duplication < 5) return " +";
-	if(duplication < 10) return " o";
-	if(duplication < 20) return " -"; 
+str rankDuplication(real duplication){
+	if(duplication < 3.0) return "++";
+	if(duplication < 5.0) return " +";
+	if(duplication < 10.0) return " o";
+	if(duplication < 20.0) return " -"; 
 	return "--";
 }

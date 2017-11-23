@@ -19,7 +19,7 @@ public loc smallsql = |project://smallsql|;
 public loc library = |project://Library|;
 
 /* Choose the location of the project you want to test. */
-public loc project = library;
+public loc project = smallsql;
 
 /* Set the interval for unit size measurement */
 list[int] unitSizeInterval = [15, 30, 60];
@@ -29,7 +29,7 @@ public void main() {
 	/* Declare all variables in case you don't want to test for all of the metrics. */
 	linesOfCode = 0;
 	unitSize = [0.0, 0.0, 0.0, 0.0];
-	complexity = [0.0,0.0,0.0];
+	complexity = [0.0, 0.0, 0.0];
 	duplication = 0;
 
 	/* Calculate the metrics. */
@@ -37,7 +37,7 @@ public void main() {
 	linesOfCode = startVolume(model);
 	unitSize = startUnitSize(model);
 	complexity = startComplexity(project, linesOfCode);
-	duplication = startDuplication(model, linesOfCode);
+	//duplication = startDuplication(model, linesOfCode);
 	
 	/* Print the results. */
 	printReport(linesOfCode, unitSize, complexity, duplication);
@@ -84,10 +84,10 @@ list[real] startComplexity(loc project, int linesOfCode) {
 }
 
 /* Calculate duplication. */
-int startDuplication(M3 model, int linesOfCode) {
+real startDuplication(M3 model, int linesOfCode) {
 	print("Calculating code duplication: ");
 	startTime = now();
-	duplication = linesOfCode / printDuplication(model) * 100;
+	duplication = (((printDuplication(model) - linesOfCode) * 1.0) / linesOfCode) * 100;
 	print(duplication);
 	println("% of the code.");
 	printTimeStep(startTime);

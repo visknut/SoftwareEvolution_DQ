@@ -15,7 +15,7 @@ import lang::java::\syntax::Disambiguate;
 
 import cleantext;
 
-// Code from rascasl website, metrics example
+// Based on code from rascasl website, metrics example
 // http://www.rascal-mpl.org/#_Metrics
 int cyclomaticComplexity(MethodDec model) {
 	result = 1;
@@ -37,11 +37,15 @@ int cyclomaticComplexity(MethodDec model) {
 	return result;
 }
 
+// Based on code from rascasl website, metrics example
+// http://www.rascal-mpl.org/#_Metrics
 list[list[int codeComplexity]] findUnitComplexity(loc project, list[int] codeComplexityInterval) {
   return [[*codeComplexity(f) | /file(f) <- crawl(project), f.extension == "java"],
   [*codeComplexityVolume(f) | /file(f) <- crawl(project), f.extension == "java"]];
 }
 
+// Based on code from rascasl website, metrics example
+// http://www.rascal-mpl.org/#_Metrics
 set[MethodDec] allMethods(loc file) = {m | /MethodDec m := parse(#start[CompilationUnit], file)};
 
 list[int cc] codeComplexity(loc file) = [cyclomaticComplexity(m) | m <- allMethods(file)];

@@ -11,13 +11,14 @@ public list[str] cleanText(loc file) {
 	text = readFile(file);
 	
 	textNoComments = visit(text) {
-		case /\/\*.*?\*\//s => "" // MultiLine /s for single line matching regex flag	
-	};
-	textNoComments = visit(textNoComments) {
 		case /\/\/.*/ => "" // SingleLine		
 	};
 	
+	textNoComments = visit(textNoComments) {
+		case /\/\*.*?\*\//s => "" // MultiLine /s for single line matching regex flag	
+	};
+	
 	textInList = [ trim(x) | x <- split("\n", textNoComments), /^\s*$/ !:= x ]; // /^\s*$/ select white
-	//println(textInList);
+	
 	return textInList;
 }
