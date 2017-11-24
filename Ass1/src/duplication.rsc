@@ -23,16 +23,15 @@ int printDuplication(M3 model) {
 	for (list[str] file <- fileList) {
 		duplicateLines += checkDuplactesFile(file, fileList);
 	}
-	
+	println(duplicateLines);
 	return duplicateLines;
 }
 
 /* Compare a file with all the other files except itself. */
 int checkDuplactesFile(list[str] file, list[list[str]] fileList) {
-	print(".");
 	duplicateLines = 0;	
 	for (list[str] comparedFile <- fileList) {
-		duplicateLines += compareFiles(file, comparedFile);
+		if(comparedFile != file){duplicateLines += compareFiles(file, comparedFile);}
 	}
 	//if (duplicateLines > 0) {println(duplicateLines);}
 	return duplicateLines;

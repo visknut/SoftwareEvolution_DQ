@@ -19,7 +19,7 @@ public loc smallsql = |project://smallsql|;
 public loc library = |project://Library|;
 
 /* Choose the location of the project you want to test. */
-public loc project = smallsql;
+public loc project = hsqldb;
 
 /* Set the interval for unit size measurement */
 list[int] unitSizeInterval = [15, 30, 60];
@@ -40,7 +40,7 @@ public void main() {
 	duplication = startDuplication(model, linesOfCode);
 	
 	/* Print the results. */
-	printReport(linesOfCode, unitSize, complexity, duplication);
+	//printReport(linesOfCode, unitSize, complexity, duplication);
 }
 
 /* Create m3 model */
