@@ -12,7 +12,7 @@ import cleantext;
 /* Take every method and compare to all the other methods once. */
 int printDuplication(M3 model) {
 	/* Remove empty lines and comments. */
-	fileList = mapper(toList(files(model)), cleanText);
+	fileList = mapper(toList(methods(model)), cleanText);
 	/* Remove any files that are to small to be relevant. */
 	fileList = [ x | x <- fileList, size(x) > 6];
 	/* Remove lines with only a bracket, because they cause the scan to find unrelevant duplications. */
@@ -23,7 +23,7 @@ int printDuplication(M3 model) {
 	for (list[str] file <- fileList) {
 		duplicateLines += checkDuplactesFile(file, fileList);
 	}
-	
+	println(duplicateLines);
 	return duplicateLines;
 }
 
@@ -31,7 +31,7 @@ int printDuplication(M3 model) {
 int checkDuplactesFile(list[str] file, list[list[str]] fileList) {
 	duplicateLines = 0;	
 	for (list[str] comparedFile <- fileList) {
-		duplicateLines += compareFiles(file, comparedFile);
+		if(comparedFile != file){duplicateLines += compareFiles(file, comparedFile);}
 	}
 	//if (duplicateLines > 0) {println(duplicateLines);}
 	return duplicateLines;

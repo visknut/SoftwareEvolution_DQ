@@ -37,7 +37,7 @@ public void main() {
 	linesOfCode = startVolume(model);
 	unitSize = startUnitSize(model);
 	complexity = startComplexity(project, linesOfCode);
-	//duplication = startDuplication(model, linesOfCode);
+	duplication = startDuplication(model, linesOfCode);
 	
 	/* Print the results. */
 	printReport(linesOfCode, unitSize, complexity, duplication);
@@ -87,7 +87,7 @@ list[real] startComplexity(loc project, int linesOfCode) {
 real startDuplication(M3 model, int linesOfCode) {
 	print("Calculating code duplication: ");
 	startTime = now();
-	duplication = (((printDuplication(model) - linesOfCode) * 1.0) / linesOfCode) * 100;
+	duplication = (((printDuplication(model)) * 1.0) / linesOfCode) * 100;
 	print(duplication);
 	println("% of the code.");
 	printTimeStep(startTime);
