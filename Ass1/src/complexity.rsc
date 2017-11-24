@@ -37,22 +37,23 @@ int cyclomaticComplexity(MethodDec model) {
 	return result;
 }
 
-// Based on code from rascasl website, metrics example
+// Code from rascasl website, metrics example
 // http://www.rascal-mpl.org/#_Metrics
-list[list[int codeComplexity]] findUnitComplexity(loc project, list[int] codeComplexityInterval) {
-  return [[*codeComplexity(f) | /file(f) <- crawl(project), f.extension == "java"],
+list[list[int codeComplexity]] findUnitComplexity(loc project, M3 model, list[int] codeComplexityInterval) {
+  return [[*codeComplexity(f) | f <- toList(files(model))],
   [*codeComplexityVolume(f) | /file(f) <- crawl(project), f.extension == "java"]];
 }
 
-// Based on code from rascasl website, metrics example
+// Code from rascasl website, metrics example
 // http://www.rascal-mpl.org/#_Metrics
+// TODO: Check if parser accepts templated things.
 set[MethodDec] allMethods(loc file) = {m | /MethodDec m := parse(#start[CompilationUnit], file)};
 
 list[int cc] codeComplexity(loc file) = [cyclomaticComplexity(m) | m <- allMethods(file)];
 list[int methodVolume] codeComplexityVolume(loc file) = [size(cleanText(m@\loc)) | m <- allMethods(file)];
 
-list[real] complexityBins(loc project, list[int] codeComplexityInterval, int linesOfCode) {
-	complexityResult = findUnitComplexity(project, codeComplexityInterval);
+list[real] complexityBins(loc project, M3 model, list[int] codeComplexityInterval, int linesOfCode) {
+	complexityResult = findUnitComplexity(project, model, codeComplexityInterval);
 	unitComplexity = complexityResult[0];
 	unitLength = [(x/(linesOfCode * 1.0)) * 100 | x <- complexityResult[1]];
 	

@@ -22,3 +22,16 @@ public list[str] cleanText(loc file) {
 	
 	return textInList;
 }
+
+public str removeTemplates(loc file) {
+	text = "";
+	try {
+		text = readFile(file);
+	} catch IO(msg): {
+		println("This did not work: <msg>"); 
+		return text;
+	}
+	textInList = [ trim(x) | x <- split("\n", text), /.+\<.+\>.+=.+\<.+\>.+;/ !:= x ]; // .+<.+> .+=.+<.+>.+; select templates
+	text = intercalate("\n", textInList);
+	return text;
+}

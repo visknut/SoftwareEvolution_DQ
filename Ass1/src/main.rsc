@@ -30,14 +30,14 @@ public void main() {
 	linesOfCode = 0;
 	unitSize = [0.0, 0.0, 0.0, 0.0];
 	complexity = [0.0, 0.0, 0.0];
-	duplication = 0;
+	duplication = 0.0;
 
 	/* Calculate the metrics. */
 	model = initModel(project);
 	linesOfCode = startVolume(model);
 	unitSize = startUnitSize(model);
-	complexity = startComplexity(project, linesOfCode);
-	//duplication = startDuplication(model, linesOfCode);
+	complexity = startComplexity(model, project, linesOfCode);
+	duplication = startDuplication(model, linesOfCode);
 	
 	/* Print the results. */
 	printReport(linesOfCode, unitSize, complexity, duplication);
@@ -74,10 +74,10 @@ list[real] startUnitSize(M3 model) {
 }
 
 /* Calculate complexity. */
-list[real] startComplexity(loc project, int linesOfCode) {
+list[real] startComplexity(M3 model, loc project, int linesOfCode) {
 	println("Calculating Unit complexity with interval(<unitComplexityInterval>):");
 	startTime = now();
-	complexity = complexityBins(project, unitComplexityInterval, linesOfCode);
+	complexity = complexityBins(project, model, unitComplexityInterval, linesOfCode);
 	println("Moderate: <complexity[0]>% | High: <complexity[1]>% | Very high <complexity[2]>%.");
 	printTimeStep(startTime);
 	return complexity;
@@ -87,7 +87,7 @@ list[real] startComplexity(loc project, int linesOfCode) {
 real startDuplication(M3 model, int linesOfCode) {
 	print("Calculating code duplication: ");
 	startTime = now();
-	duplication = (((printDuplication(model) - linesOfCode) * 1.0) / linesOfCode) * 100;
+	duplication = ((printDuplication(model) * 1.0) / linesOfCode) * 100;
 	print(duplication);
 	println("% of the code.");
 	printTimeStep(startTime);
