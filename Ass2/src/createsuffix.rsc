@@ -10,6 +10,7 @@ import String;
 import sxtree;
 
 private str text = "abcabxabcd$"; 
+private list[int] hashedCode = [1,2,3,1,2,4,1,2,3,5,-1];
 
 private int nodeId;
 private SXNODE root;
@@ -21,15 +22,15 @@ private SXNODE nullNode = sxNode(-1, <0, 0>, [], -1);
 	aN = activeNode
 	aE = activeEdge
 	aL = activeLength
-	aC = activeCharacter
+	aH = activeHash
 */
-private tuple[SXNODE aN, SXNODE aE, int aL, int aC] aP;
+private tuple[SXNODE aN, SXNODE aE, int aL, int aH] aP;
 private int remainder;
 
 //
 private int count;
 
-public int createSuffixTree(str givenText) {
+public int createSuffixTree(list[int] code) {
 
 	/* Set variables to zero for a new tree. */
 	nodeId = 0;
@@ -39,20 +40,20 @@ public int createSuffixTree(str givenText) {
 	count = 0;
 	
 	
-	/* Use test text if string is empty */
-	if (givenText != "") {
-		text = givenText + "$";
+	/* Use test code if the input is empty */
+	if (code != []) {
+		hashedCode = code + [-1];
 	}
 	
 	/* Initiate the tree. */
 	root = sxNode(nodeId, <0, 0>, [], -1);
 	nodeId += 1;
-	tuple[SXNODE aN, SXNODE aE, int aL, int aC] startAp = <root, nullNode, 0, -1>;
+	tuple[SXNODE aN, SXNODE aE, int aL, int aH] startAp = <root, nullNode, 0, -1>;
 	aP = startAp;
 	
-	/* The algorithm moves through the string from left to right. */
-	for (i <- [0 .. size(text)]) {
-		/* Remainder is incremented every step and only decremented when the character is inserted. */
+	/* The algorithm moves through the list from left to right. */
+	for (i <- [0 .. size(hashedCode)]) {
+		/* Remainder is incremented every step and only decremented when the hash is inserted. */
 		remainder += 1;
 		/* Needed to check if a suffix link needs to be created. */
 		linkedNode = 0;
@@ -61,7 +62,7 @@ public int createSuffixTree(str givenText) {
 	}
 	
 	/* Finalize and show the tree. */
-	root = fillTree(size(text) - 1, root);
+	root = fillTree(size(hashedCode) - 1, root);
 	println(root);
 	
 	return 0;
@@ -75,7 +76,7 @@ private void step(int i) {
 	println("Active node <aP.aN.id>");
 	println("Active edge <aP.aE.id>");
 	println("Active length <aP.aL>");
-	println("Active character: <aP.aC>");
+	println("Active hash: <aP.aH>");
 	println("Remainder <remainder - 1>");
 	println("Link <linkedNode>");
 	println("");
@@ -96,30 +97,30 @@ private void step(int i) {
 	}
 }
 
-/* Check if character can be found one of the edges leaving the root node. */
-/* If not, create a new edge for that character. If so, follow that edge until it stops matching. */
+/* Check if hash can be found one of the edges leaving the root node. */
+/* If not, create a new edge for that hash. If so, follow that edge until it stops matching. */
 private void rootExtension(int i) {
-	/* Search for the character on leaving edges. */
-	SXNODE matchingEdge = findChar(root, i, text);
-	/* Character was not found, new edge created. */
+	/* Search for the hash on leaving edges. */
+	SXNODE matchingEdge = findHash(root, i, hashedCode);
+	/* hash was not found, new edge created. */
 	if (matchingEdge.id == -1) {
 		newNode = sxNode(nodeId, <i, 0>, [], -1);
 		root.childeren += [newNode];
 		nodeId += 1;
 		remainder -= 1;
 		
-	/* Character found, store this edge to follow it in the next step. */
+	/* hash found, store this edge to follow it in the next step. */
 	} else {
 		aP = <root, matchingEdge, 1, i>;
-		/* Remainder in not decremented, because we still need to add this character to the tree. */
+		/* Remainder in not decremented, because we still need to add this hash to the tree. */
 	}
 }
 		
-/* Check if the current character can be found on the activeEdge. */
+/* Check if the current hash can be found on the activeEdge. */
 /* If so, we keep following this edge. If not, we create an internal node. */
 private void activeEdgeExtension(int i) {
-	/* Check if current character matches with the next on the activeEdge. */
-	if (charAt(text, aP.aL + aP.aE.edge.left) == charAt(text, i)) {
+	/* Check if current hash matches with the next on the activeEdge. */
+	if (hashedCode[aP.aL + aP.aE.edge.left] == hashedCode[i]) {
 		/* Check the length of the active edge. */
 		int edgeLength;
 		if (aP.aE.edge.right == 0) {
@@ -132,11 +133,11 @@ private void activeEdgeExtension(int i) {
 			aP.aN = aP.aE;
 			aP.aE = nullNode;
 			aP.aL = 0;
-			aP.aC = -1;
+			aP.aH = -1;
 		} else {
 			aP.aL += 1;
 		}
-		/* Remainder in not decremented, because we still need to add this character to the tree. */
+		/* Remainder in not decremented, because we still need to add this hash to the tree. */
 	} else {
 		int oldSubTreeId = aP.aN.id;
 		SXNODE newSubtree = createInternalNode(i);
@@ -155,11 +156,11 @@ private void activeEdgeExtension(int i) {
 			} else {
 				aP.aN = findNode(root, aP.aN.link);
 			}
-			aP.aE = findChar(aP.aN, aP.aC, text);
+			aP.aE = findHash(aP.aN, aP.aH, hashedCode);
 		} else {
 			aP.aL -= 1;
-			aP.aC += 1;
-			aP.aE = findChar(aP.aN, aP.aC, text);
+			aP.aH += 1;
+			aP.aE = findHash(aP.aN, aP.aH, hashedCode);
 		}
 		
 		remainder -= 1;
@@ -169,9 +170,9 @@ private void activeEdgeExtension(int i) {
 }
 
 private void internalNodeExtension(int i) {
-	/* Search for the charactar on leaving edges. */
-	SXNODE matchingEdge = findChar(aP.aN, i, text);
-	/* Character was not found, new edge created. */
+	/* Search for the hash on leaving edges. */
+	SXNODE matchingEdge = findHash(aP.aN, i, hashedCode);
+	/* hash was not found, new edge created. */
 	if (matchingEdge.id == -1) {
 		newNode = sxNode(nodeId, <i, 0>, [], -1);
 		nodeId += 1;
@@ -182,12 +183,12 @@ private void internalNodeExtension(int i) {
 		aP.aE = nullNode;
 		remainder -= 1;
 		
-	/* Character found, store this edge to follow it in the next step. */
+	/* hash found, store this edge to follow it in the next step. */
 	} else {
 		aP.aE = matchingEdge;
 		aP.aL += 1;
-		aP.aC = i;
-		/* Remainder in not decremented, because we still need to add this character to the tree. */
+		aP.aH = i;
+		/* Remainder in not decremented, because we still need to add this hash to the tree. */
 	}
 }
 

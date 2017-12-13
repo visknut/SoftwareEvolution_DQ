@@ -1,7 +1,7 @@
 module main
 
 import IO;
-import test123;
+//import test123;
 import List;
 import Set;
 import lang::java::m3::Core;
@@ -23,12 +23,12 @@ public void main() {
 	/* Calculate the metrics. */
 	
 	startTime = now();
-  	suffix = createSuffixTree("");
+  	suffix = createSuffixTree([]);
   	printTimeStep(startTime);
   	
-	model = initModel(project);
-	ast = initAst(model);
-	text(ast);
+	//model = initModel(project);
+	//ast = initAst(model);
+	//text(ast);
 }
 
 /* Create m3 model */
