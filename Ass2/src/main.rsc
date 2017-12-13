@@ -8,6 +8,8 @@ import lang::java::m3::Core;
 import lang::java::jdt::m3::Core;
 import DateTime;
 
+import createsuffix;
+
 public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
 public loc library = |project://Library|;
@@ -17,17 +19,14 @@ public loc project = hsqldb;
 
 public void main() {
 	/* Calculate the metrics. */
-	model = initModel(project);
+	
+	startTime = now();
+  	suffix = createSuffixTree("");
+  	printTimeStep(startTime);
+  	
+  	return;
 }
 
-/* Create m3 model */
-public M3 initModel(loc l) {
-	println("Loading code.");
-	startTime = now();
-  	myModel = createM3FromEclipseProject(l);
-  	printTimeStep(startTime);
-  	return myModel;
-}
 
 /* Print how long a step took */
 public void printTimeStep(datetime startTime) {
