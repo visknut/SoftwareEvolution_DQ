@@ -34,7 +34,7 @@ list[nodeStructure] filterNodes(set[Declaration] declarations, int nodeSizeThres
 			visit (nListNode) {
 				case node n: {
 					nSizeCounter += 1;
-					nLoc = nodeFileLocation(n);
+					nLoc = nodeLoc(n);
 				}
 			}
 			if(nSizeCounter >= nodeSizeThresshold && nLoc != |empty:///|) filteredNodes += <unsetRec(nListNode), nLoc>;
@@ -45,7 +45,7 @@ list[nodeStructure] filterNodes(set[Declaration] declarations, int nodeSizeThres
 }
 
 
-loc nodeFileLocation(node n) {
+loc nodeLoc(node n) {
 	switch(n) {
 		case \Declaration x: return x.src;
 		case \Expression y: return y.src;

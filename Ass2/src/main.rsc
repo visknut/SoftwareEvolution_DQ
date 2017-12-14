@@ -11,6 +11,7 @@ import util::ValueUI;
 import DateTime;
 
 import util::time;
+import util::loading;
 import manipulation::serialization;
 import manipulation::nodeFilter;
 import detection::createsuffix;
@@ -33,19 +34,9 @@ public void main() {
 	
 	/* SuffixTree */
   	suffix = createSuffixTree([]);
-  	printTimeStep(startTime);
   	
   	/* Export suffix tree */
   	iprintln(suffix);
-  	//iprintToFile(|cwd:///text.txt|, suffix);
-}
-
-/* Create ast node */
-public set[Declaration] initAst(loc l) {
-	set[Declaration] ast = {};
-  	  	
-	fileLocations = toList(files(createM3FromEclipseProject(l)));	
-	for(int n <- [0..size(fileLocations)]) ast += createAstFromFile(fileLocations[n], true); 
-	
-	return ast;
+  	
+  	printTimeStep(startTime);
 }
