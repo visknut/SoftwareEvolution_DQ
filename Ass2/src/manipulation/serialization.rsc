@@ -1,4 +1,4 @@
-module serialization
+module manipulation::serialization
 
 import IO;
 import lang::java::m3::Core;
@@ -10,10 +10,10 @@ import Set;
 import Node;
 import util::ValueUI;
 
-void serializeAst(set[Declaration] projectAst) {
-	//map[int, tuple[node, loc]] endMap = ();
-	set[Declaration] ast = traverseNodes(projectAst);
-	text(ast);
+private list[&T] emptyList(type[&T] _) = [];
+
+set[Declaration] serializeAst(set[Declaration] projectAst) {
+	return traverseNodes(projectAst);
 }
 
 set[Declaration] traverseNodes(set[Declaration] ast) {
@@ -25,22 +25,24 @@ set[Declaration] traverseNodes(set[Declaration] ast) {
 node serialize(node x) {
 	// for all posiblities see: https://github.com/usethesource/rascal/blob/56b48973b85ab0770cd7abe04c45a5d6b9ebe109/src/org/rascalmpl/library/lang/java/m3/AST.rsc
 	return visit(x) {
+		//case EmptyList() : println("emptyLine Found");
+	
 		// Declaration
 		case \enumConstant(_, ecArgs, ecClass) => \enumConstant("enumConstantID", ecArgs, ecClass)
 		case \enumConstant(_, ecArgs) => \enumConstant("enumConstantID", ecArgs)
 		case \class(_, cExt, cImp, cBody) => \class("classID", cExt, cImp, cBody)
 		//case \class(_)
 		case \interface(_, iExt, iImp, iBody) => \interface("interfaceID", iExt, iImp, iBody)
-		//case \method(_,xPrmtrs, mExcpt, mImp) => \method(defaultType, "methodID", mPrmtrs, mExcpt, mImp) // do sumthing with return?
+		//case \method(_, _, xPrmtrs, mExcpt, mImp) => \method(_, "methodID", mPrmtrs, mExcpt, mImp) // do sumthing with return?
 		//case \method(_, _, mPrmtrs, mExcpt) => \method(_, "methodID", mPrmtrs, mExcpt)
 		case \constructor(_, cPara, cExcpt, cImpl) => \constructor("constructorID", cPara, cExcpt, cImpl)
 		//case \variables()??
 		//case \typeParameter(_, tPext) => \typeParameter("typeParameterID",tPext)
 		case \annotationType(_, aBody) => \annotationType("annotationTypeID",aBody)
-		case \annotationTypeMember(_, _) => \annotationTypeMember(_, "annotationTypeMemberID")
-		case \annotationTypeMember(_, _, defB) => \annotationTypeMember(_, "annotationTypeMemberID", defB)
+		//case \annotationTypeMember(_, _) => \annotationTypeMember(_, "annotationTypeMemberID")
+		//case \annotationTypeMember(_, _, defB) => \annotationTypeMember(_, "annotationTypeMemberID", defB)
 		//case \parameter(_, _, pExt) => \parameter(_, "parameterID", pExt)
-		case \vararg(_, _) => \vararg(_, "varargID")
+		//case \vararg(_, _) => \vararg(_, "varargID")
 		
 		// Expression
 		case \characterLiteral(_) => \characterLiteral("charID")
@@ -69,61 +71,3 @@ node serialize(node x) {
 		//todo? something something
 	}
 }
-
-	
-	//for(ast <- projectAst) {
-	//	
-	//	ast = getNormalizedLocationAst(ast);
-//		int hashCounter = 0;
-//
-//		visit(ast) {
-//			// https://github.com/usethesource/rascal/blob/56b48973b85ab0770cd7abe04c45a5d6b9ebe109/src/org/rascalmpl/library/lang/java/m3/AST.rsc
-//	
-//			case Declaration x: {
-//				serialize(x);
-//		        //endMap[hashCounter] = insertIntoMap(x, x.src);
-//			}
-//			case Expression y: {
-//				println(y);
-//				//tuple[map[value, set[loc]] 
-//			}			
-//			case Statement z: {
-//				println(z);
-//				//tuple[map[value, set[loc]] 
-//			}
-//			case Type t: {
-//				println(t);
-//				//tuple[map[value, set[loc]] 
-//			}
-//		}
-	//	text(ast);
-	//	break;
-	//}
-
-//node serialize(node someNode) {
-//	visit(someNode){
-//		case \simpleName(_) => \simpleName("testID")
-//	}
-//	return someNode;
-//}
-
-
-
-//node serialize (node ast) {
-//	
-//	visit(ast) {
-//		case \simpleType(nameVariable) : {
-//			nameVariable[0] = "nameVariableID";
-//			insert nameVariable;
-//		} 
-//			
-//			case \simpleType(simpleNode) : {
-//				println(simpleNode);
-//				insert simpleNode;
-//			} 
-//		
-//		case \method(voidCall, methodName, parameters, somethingEmpty, mainBlock) : println(methodName); // => method(voidCall, "idMethodName", parameters, somethingEmpty, mainBlock)
-//		case \simpleType(nameVariable) : println(nameVariable); // "simpleNameID"
-//	}
-//	return block;
-//}

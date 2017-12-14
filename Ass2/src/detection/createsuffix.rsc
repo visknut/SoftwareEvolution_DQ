@@ -1,4 +1,4 @@
-module createsuffix
+module detection::createsuffix
 
 import IO;
 
@@ -30,7 +30,7 @@ private int remainder;
 //
 private int count;
 
-public int createSuffixTree(list[int] code) {
+public SXNODE createSuffixTree(list[int] code) {
 
 	/* Set variables to zero for a new tree. */
 	nodeId = 0;
@@ -63,23 +63,23 @@ public int createSuffixTree(list[int] code) {
 	
 	/* Finalize and show the tree. */
 	root = fillTree(size(hashedCode) - 1, root);
-	println(root);
+	//println(root);
 	
-	return 0;
+	return root;
 }
 
 private void step(int i) {
 	count += 1;
 	/* Print info about the step. */
-	println("STEP <count>:");
-	println("Tree: <root>");
-	println("Active node <aP.aN.id>");
-	println("Active edge <aP.aE.id>");
-	println("Active length <aP.aL>");
-	println("Active hash: <aP.aH>");
-	println("Remainder <remainder - 1>");
-	println("Link <linkedNode>");
-	println("");
+	//println("STEP <count>:");
+	//println("Tree: <root>");
+	//println("Active node <aP.aN.id>");
+	//println("Active edge <aP.aE.id>");
+	//println("Active length <aP.aL>");
+	//println("Active hash: <aP.aH>");
+	//println("Remainder <remainder - 1>");
+	//println("Link <linkedNode>");
+	//println("");
 	
 	if (aP.aN.id == 0) {
 		if (aP.aL == 0) {

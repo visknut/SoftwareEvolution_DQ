@@ -1,4 +1,4 @@
-module sxtree
+module detection::sxtree
 
 import List;
 import IO;

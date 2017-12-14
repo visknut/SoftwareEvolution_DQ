@@ -3,21 +3,21 @@ module main
 import IO;
 import List;
 import Set;
+import Node;
 import lang::java::m3::Core;
 import lang::java::jdt::m3::Core;
 import lang::java::m3::AST;
-import DateTime;
 import util::ValueUI;
+import DateTime;
 
-import serialization;
-import createsuffix;
+import util::time;
+import manipulation::serialization;
+import manipulation::nodeFilter;
+import detection::createsuffix;
 
 public loc hsqldb = |project://SQLBig|;
 public loc smallsql = |project://smallsql|;
 public loc library = |project://Library|;
-
-/* main dataTypes */
-alias mainMap = tuple[map(int someInt, str someString), list[tuple[int someInt, loc someLoc]]];   
 
 /* Choose the location of the project you want to test. */
 public loc project = library;
@@ -28,34 +28,24 @@ public void main() {
 	/* Serialization */
 	ast = serializeAst(initAst(project));
 	
+	/* Structuring and filtering */
+	list[nodeStructure] filteredNodes = filterNodes(ast, 6);
+	
 	/* SuffixTree */
   	suffix = createSuffixTree([]);
   	printTimeStep(startTime);
+  	
+  	/* Export suffix tree */
+  	iprintln(suffix);
+  	//iprintToFile(|cwd:///text.txt|, suffix);
 }
 
 /* Create ast node */
-public set[node] initAst(loc l) {
-	set[node] ast = {};
+public set[Declaration] initAst(loc l) {
+	set[Declaration] ast = {};
   	  	
 	fileLocations = toList(files(createM3FromEclipseProject(l)));	
-	for(int n <- [0..size(fileLocations)]) ast += createAstFromFile(fileLocations[n], true);
+	for(int n <- [0..size(fileLocations)]) ast += createAstFromFile(fileLocations[n], true); 
 	
 	return ast;
-}
-
-/* Print how long a step took */
-public void printTimeStep(datetime startTime) {
-	print("This step took: ");
-	if ((now() - startTime).hours > 0) {
-		print((now() - startTime).hours);
-		print("h");
-	}
-	if ((now() - startTime).minutes > 0) {
-		print((now() - startTime).minutes);
-		print("m");
-	}
-	print((now() - startTime).seconds);
-	print("s");
-	print((now() - startTime).milliseconds);
-	println("ms.\n");
 }
