@@ -43,7 +43,7 @@ public void main() {
 	startTime = now();
   	suffix = createSuffixTree(codeStructure);
   	printTimeStep(startTime);
-  	
+  
   	
   	/* Export suffix tree */
 
