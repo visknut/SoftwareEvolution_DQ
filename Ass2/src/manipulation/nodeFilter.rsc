@@ -37,10 +37,10 @@ list[nodeStructure] filterNodes(set[Declaration] declarations, int nodeSizeThres
 					nLoc = nodeLoc(n);
 				}
 			}
-			if(nSizeCounter >= nodeSizeThresshold && nLoc != |empty:///|) filteredNodes += <unsetRec(nListNode), nLoc>;
+			node tempNode = unsetRec(nListNode);
+			if(nSizeCounter >= nodeSizeThresshold && nodeLoc(tempNode) != |empty:///|) filteredNodes += <tempNode, nLoc>;
 		}
 	}
-	
 	return filteredNodes;
 }
 

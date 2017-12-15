@@ -30,13 +30,14 @@ public void main() {
 	ast = serializeAst(initAst(project));
 	
 	/* Structuring and filtering */
-	list[nodeStructure] filteredNodes = filterNodes(ast, 6);
-	
+	list[nodeStructure] filteredNodes = filterNodes(ast, 50);
+	text(filteredNodes);
+
 	/* SuffixTree */
-  	suffix = createSuffixTree([]);
+  	//suffix = createSuffixTree([]);
   	
   	/* Export suffix tree */
-  	iprintln(suffix);
+  	//iprintln(suffix);
   	
   	printTimeStep(startTime);
 }

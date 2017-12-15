@@ -7,7 +7,7 @@ import Set;
 import Node;
 import String;
 
-import sxtree;
+import detection::sxtree;
 
 private str text = "abcabxabcd$"; 
 private list[int] hashedCode = [1,2,3,1,2,4,1,2,3,5,-1];
