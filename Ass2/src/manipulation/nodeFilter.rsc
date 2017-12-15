@@ -14,7 +14,7 @@ alias nodeStructure = tuple[node n, loc nLoc];
 
 list[nodeStructure] filterNodes(set[Declaration] declarations, int nodeSizeThresshold) {
 	/* Filters nodes who are too small and put the correct ones in a list */
-	list[nodeStructure] filteredNodes = [<"how to innitiate empty?"(1, true, "abc"), |empty:///|>];
+	list[nodeStructure] filteredNodes = [];
 	
 	for(decl <- declarations) {
 		list[node] nList = [];

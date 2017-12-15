@@ -12,7 +12,7 @@ import DateTime;
 
 import util::time;
 import util::loading;
-import manipulation::serialization;
+import manipulation::serialization2;
 import manipulation::nodeFilter;
 import detection::createsuffix;
 
@@ -21,22 +21,31 @@ public loc smallsql = |project://smallsql|;
 public loc library = |project://Library|;
 
 /* Choose the location of the project you want to test. */
-public loc project = library;
+public loc project = smallsql;
 
 public void main() {
+	/* Loading */
 	startTime = now();
+	ast = initAst(project);
+	printTimeStep(startTime);
 	
 	/* Serialization */
-	ast = serializeAst(initAst(project));
+	startTime = now();
+	//lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
+	lrel[int code, value location] codeStructure = serializeAst(ast);
+	printTimeStep(startTime);
 	
-	/* Structuring and filtering */
-	list[nodeStructure] filteredNodes = filterNodes(ast, 6);
-	
+	//for (code <- codeStructure) {
+	//	println(code.code);
+	//}
+
 	/* SuffixTree */
-  	suffix = createSuffixTree([]);
+	startTime = now();
+  	suffix = createSuffixTree(codeStructure);
+  	printTimeStep(startTime);
+  	
   	
   	/* Export suffix tree */
-  	iprintln(suffix);
-  	
-  	printTimeStep(startTime);
+
+
 }

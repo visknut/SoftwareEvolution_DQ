@@ -7,10 +7,9 @@ import Set;
 import Node;
 import String;
 
-import sxtree;
+import detection::sxtree;
 
-private str text = "abcabxabcd$"; 
-private list[int] hashedCode = [1,2,3,1,2,4,1,2,3,5,-1];
+private lrel[int code, value location] hashedCode = [];
 
 private int nodeId;
 private SXNODE root;
@@ -30,7 +29,7 @@ private int remainder;
 //
 private int count;
 
-public SXNODE createSuffixTree(list[int] code) {
+public SXNODE createSuffixTree(lrel[int code, value location] code) {
 
 	/* Set variables to zero for a new tree. */
 	nodeId = 0;
@@ -41,8 +40,10 @@ public SXNODE createSuffixTree(list[int] code) {
 	
 	
 	/* Use test code if the input is empty */
-	if (code != []) {
-		hashedCode = code + [-1];
+	if (code == []) {
+		hashedCode = [<1, |empty:///|> ,<2, |empty:///|>, <3, |empty:///|>, <1, |empty:///|>, <2, |empty:///|>, <4, |empty:///|>, <1, |empty:///|> ,<2, |empty:///|>, <3, |empty:///|>, <5, |empty:///|>, <-1, |empty:///|>];
+	} else {
+		hashedCode = code + [<-1, |empty:///|>];
 	}
 	
 	/* Initiate the tree. */
@@ -120,7 +121,7 @@ private void rootExtension(int i) {
 /* If so, we keep following this edge. If not, we create an internal node. */
 private void activeEdgeExtension(int i) {
 	/* Check if current hash matches with the next on the activeEdge. */
-	if (hashedCode[aP.aL + aP.aE.edge.left] == hashedCode[i]) {
+	if (hashedCode[aP.aL + aP.aE.edge.left].code == hashedCode[i].code) {
 		/* Check the length of the active edge. */
 		int edgeLength;
 		if (aP.aE.edge.right == 0) {
