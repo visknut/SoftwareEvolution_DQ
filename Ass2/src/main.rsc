@@ -12,6 +12,7 @@ import DateTime;
 
 import util::time;
 import util::loading;
+import util::jsonExporter;
 import manipulation::serialization;
 import manipulation::nodeFilter;
 import detection::createsuffix;
@@ -27,17 +28,17 @@ public void main() {
 	startTime = now();
 	
 	/* Serialization */
-	ast = serializeAst(initAst(project));
+	//ast = serializeAst(initAst(project));
 	
 	/* Structuring and filtering */
-	list[nodeStructure] filteredNodes = filterNodes(ast, 50);
-	text(filteredNodes);
+	//list[nodeStructure] filteredNodes = filterNodes(ast, 50);
+	//text(filteredNodes);
 
 	/* SuffixTree */
-  	//suffix = createSuffixTree([]);
+  	suffix = createSuffixTree([]);
   	
   	/* Export suffix tree */
-  	//iprintln(suffix);
+  	exportResult(suffix);
   	
   	printTimeStep(startTime);
 }
