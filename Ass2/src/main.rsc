@@ -19,7 +19,7 @@ import manipulation::nodeFilter;
 import detection::createsuffix;
 
 public loc hsqldb = |project://SQLBig|;
-public loc smallsql = |project://smallsql|;
+public loc smallsql = |project://smallsql0.21_src|;
 public loc library = |project://Library|;
 
 /* Choose the location of the project you want to test. */
