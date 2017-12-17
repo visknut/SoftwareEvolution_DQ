@@ -25,9 +25,9 @@ public SXNODE fillSubTree(int i, SXNODE sxnode) {
 	return sxnode;
 }
 
-public SXNODE findHash(SXNODE root, int hash, list[int] serCode) {
+public SXNODE findHash(SXNODE root, int hash, lrel[int code, value location] serCode) {
 	for (child <- root.childeren) {
-		if (serCode[child.edge.left] == serCode[hash]) {
+		if (serCode[child.edge.left].code == serCode[hash].code) {
 			return child;
 		}
 	}

@@ -10,9 +10,16 @@ import Set;
 /* Create ast node */
 public set[Declaration] initAst(loc l) {
 	set[Declaration] ast = {};
-  	  	
+  	
 	fileLocations = toList(files(createM3FromEclipseProject(l)));	
 	for(int n <- [0..size(fileLocations)]) ast += createAstFromFile(fileLocations[n], true); 
 	
+	return ast;
+}
+
+/* Create ast node from a single file. */
+public set[Declaration] initAstFile(loc l) {
+	set[Declaration] ast = {};
+  	ast += createAstFromFile(l, true);
 	return ast;
 }
