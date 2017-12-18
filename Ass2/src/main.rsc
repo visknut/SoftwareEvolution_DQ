@@ -15,6 +15,7 @@ import util::loading;
 import util::jsonExporter;
 import manipulation::serialization2;
 import detection::createsuffix3;
+import tests::main_test;
 
 public loc hsqldb = |project://hsqldb-2.3.1|;
 public loc smallsql = |project://smallsql0.21_src|;
@@ -33,6 +34,10 @@ public void run_smallsql() {
 
 public void run_bigsql() {
 	main(bigsql, 100);
+}
+
+public void run_tests() {
+	main_tests();
 }
 
 /* Main Function to detect duplicates and export it to json */

@@ -19,20 +19,18 @@ def libary():
     # return flask.render_template("library.html")
     return flask.render_template('library.html')
 
-
 @app.route("/library_data", methods=["GET", "POST"])
 def library_data():
     json_data = read_to_json('library')
     return str(manipulate_json(json_data))
 
 @app.route("/smallsql", methods=["GET", "POST"])
-def libary():
+def smallsql():
     return flask.render_template('smallsql.html')
 
-
 @app.route("/smallsql_data", methods=["GET", "POST"])
-def library_data():
-    json_data = read_to_json('smallsql')
+def smallsql_data():
+    json_data = read_to_json('smallsql0.21_src')
     return str(manipulate_json(json_data))
 
 # def subprocess_cmd(command):
