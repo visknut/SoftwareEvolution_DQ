@@ -17,8 +17,8 @@ private int remainder;
 
 data SXNODE = sxNode(int id, tuple[int left, int right] edge, list[SXNODE] childeren, int link); 
 
-void exportResult(list[SXNODE] suffixTree, loc project){
-	loc outputLoc = toLocation("file:///tmp/software_evolution_DQ/library.json"); 
+void exportResult(list[SXNODE] suffixTree, loc project, str projectName){
+	loc outputLoc = toLocation("file:///tmp/software_evolution_DQ/<projectName>.json"); 
 	str duplicateResult = "";
 	str jsonResult = "";
 	
@@ -30,6 +30,7 @@ void exportResult(list[SXNODE] suffixTree, loc project){
 	
 	jsonResult = "{
 		\"project\": { \n
+			\"name\": \"<projectName>\"
 			\"location\": \"<project>\"
 		},
 		\"suffixTree\": [<duplicateResult>}],
