@@ -14,9 +14,8 @@ def manipulate_json(json_data):
     root = data['suffixTree'][0]['children']
     dicts_by_id = build_dict(data['suffixTree'], 'id')
 
-    result_json = {}
     result_json = fill_children(root[1:-1].split(','),
-                                result_json,
+                                {},
                                 dicts_by_id)
 
     return json.dumps(result_json)
