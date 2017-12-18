@@ -12,45 +12,40 @@ import DateTime;
 
 import util::time;
 import util::loading;
-import util::jsonExporter;
-//import manipulation::serialization;
 import manipulation::serialization2;
 import manipulation::nodeFilter;
-import detection::createsuffix;
+import detection::createsuffix2;
 
 public loc hsqldb = |project://SQLBig|;
-public loc smallsql = |project://smallsql0.21_src|;
+public loc smallsql = |project://smallsql|;
 public loc library = |project://Library|;
 
 /* Choose the location of the project you want to test. */
-public loc project = smallsql;
+public loc project = library;
 
 public void main() {
 	/* Loading */
 	startTime = now();
+	println("Loading AST");
 	ast = initAst(project);
+	printTimeStep(startTime);
 	
 	/* Serialization */
-	//ast = serializeAst(initAst(project));
-	
-	/* Structuring and filtering old version*/
-	//list[nodeStructure] filteredNodes = filterNodes(ast, 50);
-	//text(filteredNodes);
-  	
-	/* Structuring and filtering new version*/
-	//lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
-	lrel[int code, value location] codeStructure = serializeAst(ast);
-	
-	//for (code <- codeStructure) {
-	//	println(code.code);
-	//}
+	startTime = now();
+	println("Serializing code");
+	lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
+	//lrel[int code, value location] codeStructure = serializeAst(ast);
+	printTimeStep(startTime);
 
 	/* SuffixTree */
 	startTime = now();
+	println("Creating a suffix tree.");
   	suffix = createSuffixTree(codeStructure);
   	printTimeStep(startTime);
   
-  	
+  	println(suffix);
   	/* Export suffix tree */
-  	exportResult(suffix);
+  	startTime = now();
+	println("Export suffix tree.");
+  	printTimeStep(startTime);
 }
