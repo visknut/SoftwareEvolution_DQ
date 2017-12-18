@@ -30,7 +30,7 @@ void exportResult(list[SXNODE] suffixTree, loc project){
 	
 	jsonResult = "{
 		\"project\": { \n
-			\"location\": \"<project>\",\n
+			\"location\": \"<project>\"
 		},
 		\"suffixTree\": [<duplicateResult>}],
 		\"mapping\": \"<project>\"
