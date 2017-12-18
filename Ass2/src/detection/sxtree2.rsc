@@ -4,7 +4,7 @@ import List;
 import IO;
 import String;
 
-data SXNODE = sxNode(int id, tuple[int left, int right] edge, set[int] childeren, int link);
+data SXNODE = sxNode(int id, tuple[int left, int right] edge, set[int] childeren, int link, value leafLocation, int length);
 
 public list[SXNODE] fillTree(int i, list[SXNODE] nodeList) {
 	list[SXNODE] finalNodeList = [];

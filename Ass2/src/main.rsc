@@ -13,11 +13,10 @@ import DateTime;
 import util::time;
 import util::loading;
 import manipulation::serialization2;
-import manipulation::nodeFilter;
-import detection::createsuffix2;
+import detection::createsuffix3;
 
-public loc hsqldb = |project://SQLBig|;
-public loc smallsql = |project://smallsql|;
+public loc hsqldb = |project://hsqldb-2.3.1|;
+public loc smallsql = |project://smallsql0.21_src|;
 public loc library = |project://Library|;
 
 /* Choose the location of the project you want to test. */
@@ -33,17 +32,27 @@ public void main() {
 	/* Serialization */
 	startTime = now();
 	println("Serializing code");
-	lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
+	//lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
 	//lrel[int code, value location] codeStructure = serializeAst(ast);
 	printTimeStep(startTime);
+	//for (sxnode <- codeStructure) {
+	//	println(sxnode);
+	//}  
 
 	/* SuffixTree */
 	startTime = now();
 	println("Creating a suffix tree.");
-  	suffix = createSuffixTree(codeStructure);
+  	suffix = createSuffixTree([]);
   	printTimeStep(startTime);
+
+	suffix = getLeafLength(suffix);
+	//suffix = filterSuffix(suffix);
+	//suffix = getLeafLocations(codeStructure, suffix);
   
-  	println(suffix);
+	for (sxnode <- suffix) {
+		println(sxnode);
+	}
+
   	/* Export suffix tree */
   	startTime = now();
 	println("Export suffix tree.");
