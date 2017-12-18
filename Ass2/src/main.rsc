@@ -49,10 +49,13 @@ public void main(loc project, int tresh) {
 	/* Serialization */
 	startTime = now();
 	println("Serializing code");
-	lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
-	//lrel[int code, value location] codeStructure = serializeAst(ast);
+	//lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
+	lrel[int code, value location] codeStructure = serializeAst(ast);
+	codeStructure += [<0, |empty:///|>];
 	printTimeStep(startTime);
 
+	println(codeStructure);
+	
 	/* SuffixTree */
 	startTime = now();
 	println("Creating a suffix tree.");
@@ -63,11 +66,10 @@ public void main(loc project, int tresh) {
 	suffix = filterSuffix(suffix, 0, treshold);
 	suffix = getLeafLocations(codeStructure, suffix);
   
-	//for (sxnode <- suffix) {
-	//	println(sxnode);
-	//}
+	for (sxnode <- suffix) {
+		println(sxnode);
+	}
 	
-	println("");
   	/* Export suffix tree */
   	startTime = now();
 	println("Export suffix tree.");

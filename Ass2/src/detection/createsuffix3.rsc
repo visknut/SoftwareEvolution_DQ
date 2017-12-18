@@ -43,7 +43,7 @@ public list[SXNODE] createSuffixTree(lrel[int code, value location] code) {
 			<1, |empty:///|>, <2, |empty:///|>, <4, |empty:///|>,
 			<1, |empty:///|>, <2, |empty:///|>, <3, |empty:///|>, <5, |empty:///|>, <-1, |empty:///|>];
 	} else {
-		hashedCode = code + [<0, |empty:///|>];
+		hashedCode = code;
 	}
 	
 	/* Initiate the tree. */
@@ -218,7 +218,6 @@ private void rule3() {
 
 public list[SXNODE] getLeafLocations(lrel[int code, value location] codeStructure, list[SXNODE] suffixTree) {
 	list[SXNODE] filledSuffixTree = [];
-	println(size(suffixTree));
 	for (sxnode <- suffixTree) {
 		if (sxnode.childeren == {}) {
 			sxnode.leafLocation = getLocation(codeStructure, sxnode);
@@ -230,6 +229,7 @@ public list[SXNODE] getLeafLocations(lrel[int code, value location] codeStructur
 
 private value getLocation(lrel[int code, value location] codeStructure, SXNODE sxnode) {
 	int locationId = sxnode.edge.left;
+	println(sxnode);
 	value ll = codeStructure[locationId].location;
 	return ll;
 }
@@ -249,7 +249,6 @@ private list[SXNODE] setNodeLength(list[SXNODE] suffixTree, int nodeId, int prev
 		tuple[int left, int right] edge = suffixTree[nodeId].edge;
 		int edgeLength = edge.right - edge.left;
 		suffixTree[nodeId].length = prevLength + edgeLength + 1;
-		println(suffixTree[nodeId]);
 		for (child <- suffixTree[nodeId].childeren) {
 			suffixTree = setNodeLength(suffixTree, child, suffixTree[nodeId].length);
 		}
