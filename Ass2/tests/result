@@ -1,113 +1,259 @@
-15
-81
-15
-81
-15
-81
-15
-81
-15
-81
-15
-81
-15
-81
-59
-9
-15
-81
-15
-81
-15
-81
-15
-81
-15
-81
-15
-81
-59
-9
-15
-81
-15
-81
-15
-81
-15
-81
-15
-81
-15
-81
-59
-9
-5
-1
+<43,|project://Ass2/tests/testFile.java|(60,1,<3,10>,<3,11>)>
+<48,|project://Ass2/tests/testFile.java|(56,5,<3,6>,<3,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(52,10,<3,2>,<3,12>)>
+<43,|project://Ass2/tests/testFile.java|(73,1,<4,10>,<4,11>)>
+<48,|project://Ass2/tests/testFile.java|(69,5,<4,6>,<4,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(65,10,<4,2>,<4,12>)>
+<43,|project://Ass2/tests/testFile.java|(86,1,<5,10>,<5,11>)>
+<48,|project://Ass2/tests/testFile.java|(82,5,<5,6>,<5,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(78,10,<5,2>,<5,12>)>
+<43,|project://Ass2/tests/testFile.java|(99,1,<6,10>,<6,11>)>
+<48,|project://Ass2/tests/testFile.java|(95,5,<6,6>,<6,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(91,10,<6,2>,<6,12>)>
+<43,|project://Ass2/tests/testFile.java|(112,1,<7,10>,<7,11>)>
+<48,|project://Ass2/tests/testFile.java|(108,5,<7,6>,<7,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(104,10,<7,2>,<7,12>)>
+<43,|project://Ass2/tests/testFile.java|(125,1,<8,10>,<8,11>)>
+<48,|project://Ass2/tests/testFile.java|(121,5,<8,6>,<8,11>)>
+<17,|unknown:///|>											   	variables
+<87,|project://Ass2/tests/testFile.java|(117,10,<8,2>,<8,12>)> 	declarationStatement
+<43,|project://Ass2/tests/testFile.java|(138,1,<9,10>,<9,11>)> 	number
+<48,|project://Ass2/tests/testFile.java|(134,5,<9,6>,<9,11>)>  	variable
+<17,|unknown:///|>											   	variables
+<87,|project://Ass2/tests/testFile.java|(130,10,<9,2>,<9,12>)> 	declarationStatement
+<64,|project://Ass2/tests/testFile.java|(48,95,<2,23>,<10,2>)> 	block
+<11,|project://Ass2/tests/testFile.java|(26,117,<2,1>,<10,2>)> 	method
+<43,|project://Ass2/tests/testFile.java|(179,1,<12,10>,<12,11>)>
+<48,|project://Ass2/tests/testFile.java|(175,5,<12,6>,<12,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(171,10,<12,2>,<12,12>)>
+<43,|project://Ass2/tests/testFile.java|(192,1,<13,10>,<13,11>)>
+<48,|project://Ass2/tests/testFile.java|(188,5,<13,6>,<13,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(184,10,<13,2>,<13,12>)>
+<43,|project://Ass2/tests/testFile.java|(205,1,<14,10>,<14,11>)>
+<48,|project://Ass2/tests/testFile.java|(201,5,<14,6>,<14,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(197,10,<14,2>,<14,12>)>
+<43,|project://Ass2/tests/testFile.java|(218,1,<15,10>,<15,11>)>
+<48,|project://Ass2/tests/testFile.java|(214,5,<15,6>,<15,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(210,10,<15,2>,<15,12>)>
+<43,|project://Ass2/tests/testFile.java|(231,1,<16,10>,<16,11>)>
+<48,|project://Ass2/tests/testFile.java|(227,5,<16,6>,<16,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(223,10,<16,2>,<16,12>)>
+<43,|project://Ass2/tests/testFile.java|(244,1,<17,10>,<17,11>)>
+<48,|project://Ass2/tests/testFile.java|(240,5,<17,6>,<17,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(236,10,<17,2>,<17,12>)>
+<64,|project://Ass2/tests/testFile.java|(167,82,<11,23>,<18,2>)>
+<11,|project://Ass2/tests/testFile.java|(145,104,<11,1>,<18,2>)>
+<43,|project://Ass2/tests/testFile.java|(285,1,<20,10>,<20,11>)>
+<48,|project://Ass2/tests/testFile.java|(281,5,<20,6>,<20,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(277,10,<20,2>,<20,12>)>
+<43,|project://Ass2/tests/testFile.java|(298,1,<21,10>,<21,11>)>
+<48,|project://Ass2/tests/testFile.java|(294,5,<21,6>,<21,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(290,10,<21,2>,<21,12>)>
+<43,|project://Ass2/tests/testFile.java|(311,1,<22,10>,<22,11>)>
+<48,|project://Ass2/tests/testFile.java|(307,5,<22,6>,<22,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(303,10,<22,2>,<22,12>)>
+<43,|project://Ass2/tests/testFile.java|(324,1,<23,10>,<23,11>)>
+<48,|project://Ass2/tests/testFile.java|(320,5,<23,6>,<23,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(316,10,<23,2>,<23,12>)>
+<43,|project://Ass2/tests/testFile.java|(337,1,<24,10>,<24,11>)>
+<48,|project://Ass2/tests/testFile.java|(333,5,<24,6>,<24,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(329,10,<24,2>,<24,12>)>
+<43,|project://Ass2/tests/testFile.java|(350,1,<25,10>,<25,11>)>
+<48,|project://Ass2/tests/testFile.java|(346,5,<25,6>,<25,11>)>
+<17,|unknown:///|>
+<87,|project://Ass2/tests/testFile.java|(342,10,<25,2>,<25,12>)>
+<64,|project://Ass2/tests/testFile.java|(273,82,<19,23>,<26,2>)>
+<11,|project://Ass2/tests/testFile.java|(251,104,<19,1>,<26,2>)>
+<6,|project://Ass2/tests/testFile.java|(0,357,<1,0>,<27,1>)>
+<1,|project://Ass2/tests/testFile.java|(0,357,<1,0>,<27,1>)>
+<0,||>
+
+sxNode(0,<0,0>,{147,151,160,153,155,161,157,159,149},-1)
+sxNode(147,<0,5>,{139,148},149) sxNode(139,<6,9>,{140,131},141) sxNode(140,<82,84>,{},-1)
+sxNode(151,<2,5>,{152,143},153)
+sxNode(160,<83,84>,{},-1)
+sxNode(155,<28,29>,{103,156},157)
+sxNode(161,<84,84>,{},-1)
+sxNode(157,<29,29>,{158,105},-1)
+sxNode(159,<82,84>,{},-1)
 
 
-
-sxNode(0,<0,0>,
-	[sxNode(55,<0,3>,
-		[sxNode(56,<44,46>,[],-1),sxNode(51,<4,5>,
-			[sxNode(52,<44,46>,[],-1),sxNode(47,<6,7>,
-				[sxNode(48,<44,46>,[],-1),sxNode(43,<8,9>,
-					[sxNode(44,<44,46>,[],-1),sxNode(39,<10,11>,
-						[sxNode(40,<44,46>,[],-1),sxNode(35,<12,13>,
-							[sxNode(36,<44,46>,[],-1),sxNode(23,<14,1>,
-								[sxNode(24,<14,46>,[],-1),sxNode(19,<2,3>,
-									[sxNode(20,<14,46>,[],-1),sxNode(15,<4,5>,
-										[sxNode(16,<14,46>,[],-1),sxNode(11,<6,7>,
-											[sxNode(12,<14,46>,[],-1),sxNode(7,<8,9>,
-												[sxNode(8,<14,46>,[],-1),sxNode(3,<10,11>,
-													[sxNode(1,<12,46>,[],-1),sxNode(29,<14,29>,
-														[sxNode(30,<44,46>,[],-1), sxNode(4,<30,46>,[],-1)
-													],-1)
-												],-1)
-											],-1)
-										],-1)
-									],-1)
-								],-1)],25)
-							],-1)
-						],-1)
-					],-1)
-				],-1)
-			],-1)
-		],-1),
-	sxNode(57,<1,3>,
-		[sxNode(58,<44,46>,[],-1),sxNode(53,<4,5>,
-			[sxNode(54,<44,46>,[],-1),sxNode(49,<6,7>,
-				[sxNode(50,<44,46>,[],-1),sxNode(45,<8,9>,
-					[sxNode(46,<44,46>,[],-1),sxNode(41,<10,11>,
-						[sxNode(42,<44,46>,[],-1),sxNode(37,<12,13>,
-							[sxNode(38,<44,46>,[],-1),sxNode(25,<14,1>,
-								[sxNode(26,<14,46>,[],-1),sxNode(21,<2,3>,
-									[sxNode(22,<14,46>,[],-1),sxNode(17,<4,5>,
-										[sxNode(18,<14,46>,[],-1),sxNode(13,<6,7>,
-											[sxNode(14,<14,46>,[],-1),sxNode(9,<8,9>,
-												[sxNode(10,<14,46>,[],-1),sxNode(5,<10,11>,
-													[sxNode(6,<14,46>,[],-1),sxNode(2,<12,46>,[],-1)],-1)
-												],-1)
-											],-1)
-										],-1)
-									],-1)
-								],-1)
-							],-1)
-						],-1)
-					],-1)
-				],-1)
-			],-1)
-		],-1),sxNode(59,<14,15>,
-			[sxNode(60,<44,46>,[],-1),sxNode(31,<16,29>,
-				[sxNode(32,<44,46>,[],-1),sxNode(27,<30,46>,[],-1)
-			],-1)
-		],61),sxNode(61,<15,15>,
-			[sxNode(62,<44,46>,[],-1),sxNode(33,<16,29>,
-				[sxNode(34,<44,46>,[],-1),sxNode(28,<30,46>,[],-1)
-			],-1)
-		],-1),sxNode(63,<44,46>,[],-1),sxNode(64,<45,46>,[],-1),sxNode(65,<46,46>,[],-1)
-	],-1)
-					
-					
+sxNode(1,<24,84>,{},-1)
+sxNode(2,<24,84>,{},-1)
+sxNode(3,<24,84>,{},-1)
+sxNode(4,<24,84>,{},-1)
+sxNode(5,<20,23>,{1,55},7)
+sxNode(6,<56,84>,{},-1)
+sxNode(7,<20,23>,{2,57},9)
+sxNode(8,<56,84>,{},-1)
+sxNode(9,<20,23>,{3,59},11)
+sxNode(10,<56,84>,{},-1)
+sxNode(11,<20,23>,{4,61},13)
+sxNode(12,<56,84>,{},-1)
+sxNode(13,<16,19>,{5,63},15)
+sxNode(14,<56,84>,{},-1)
+sxNode(15,<16,19>,{7,65},17)
+sxNode(16,<56,84>,{},-1)
+sxNode(17,<16,19>,{9,67},19)
+sxNode(18,<56,84>,{},-1)
+sxNode(19,<16,19>,{11,69},21)
+sxNode(20,<56,84>,{},-1)
+sxNode(21,<12,15>,{13,71},23)
+sxNode(22,<56,84>,{},-1)
+sxNode(23,<12,15>,{73,15},25)
+sxNode(24,<56,84>,{},-1)
+sxNode(25,<12,15>,{75,17},27)
+sxNode(26,<56,84>,{},-1)
+sxNode(27,<12,15>,{19,77},29)
+sxNode(28,<56,84>,{},-1)
+sxNode(29,<8,11>,{79,21},31)
+sxNode(30,<56,84>,{},-1)
+sxNode(31,<8,11>,{81,23},33)
+sxNode(32,<56,84>,{},-1)
+sxNode(33,<8,11>,{25,83},35)
+sxNode(34,<56,84>,{},-1)
+sxNode(35,<8,11>,{85,27},37)
+sxNode(36,<56,84>,{},-1)
+sxNode(37,<4,7>,{87,29},39)
+sxNode(38,<56,84>,{},-1)
+sxNode(39,<4,7>,{31,89},41)
+sxNode(40,<56,84>,{},-1)
+sxNode(41,<4,7>,{33,91},43)
+sxNode(42,<56,84>,{},-1)
+sxNode(43,<4,7>,{93,35},45)
+sxNode(44,<56,84>,{},-1)
+sxNode(45,<26,3>,{95,37},47)
+sxNode(46,<56,84>,{},-1)
+sxNode(47,<26,3>,{39,97},49)
+sxNode(48,<56,84>,{},-1)
+sxNode(49,<26,3>,{41,99},51)
+sxNode(50,<56,84>,{},-1)
+sxNode(51,<26,3>,{43,101},-1)
+sxNode(52,<56,84>,{},-1)
+sxNode(53,<56,84>,{},-1)
+sxNode(54,<56,84>,{},-1)
+sxNode(55,<28,55>,{6,56},57)
+sxNode(56,<82,84>,{},-1)
+sxNode(57,<28,55>,{8,58},59)
+sxNode(58,<82,84>,{},-1)
+sxNode(59,<28,55>,{10,60},61)
+sxNode(60,<82,84>,{},-1)
+sxNode(61,<28,55>,{62,12},63)
+sxNode(62,<82,84>,{},-1)
+sxNode(63,<28,55>,{64,14},65)
+sxNode(64,<82,84>,{},-1)
+sxNode(65,<28,55>,{16,66},67)
+sxNode(66,<82,84>,{},-1)
+sxNode(67,<28,55>,{68,18},69)
+sxNode(68,<82,84>,{},-1)
+sxNode(69,<28,55>,{20,70},71)
+sxNode(70,<82,84>,{},-1)
+sxNode(71,<28,55>,{72,22},73)
+sxNode(72,<82,84>,{},-1)
+sxNode(73,<28,55>,{74,24},75)
+sxNode(74,<82,84>,{},-1)
+sxNode(75,<28,55>,{76,26},77)
+sxNode(76,<82,84>,{},-1)
+sxNode(77,<28,55>,{78,28},79)
+sxNode(78,<82,84>,{},-1)
+sxNode(79,<28,55>,{80,30},81)
+sxNode(80,<82,84>,{},-1)
+sxNode(81,<28,55>,{32,82},83)
+sxNode(82,<82,84>,{},-1)
+sxNode(83,<28,55>,{34,84},85)
+sxNode(84,<82,84>,{},-1)
+sxNode(85,<28,55>,{86,36},87)
+sxNode(86,<82,84>,{},-1)
+sxNode(87,<28,55>,{88,38},89)
+sxNode(88,<82,84>,{},-1)
+sxNode(89,<28,55>,{40,90},91)
+sxNode(90,<82,84>,{},-1)
+sxNode(91,<28,55>,{92,42},93)
+sxNode(92,<82,84>,{},-1)
+sxNode(93,<28,55>,{94,44},95)
+sxNode(94,<82,84>,{},-1)
+sxNode(95,<28,55>,{96,46},97)
+sxNode(96,<82,84>,{},-1)
+sxNode(97,<28,55>,{98,48},99)
+sxNode(98,<82,84>,{},-1)
+sxNode(99,<28,55>,{50,100},101)
+sxNode(100,<82,84>,{},-1)
+sxNode(101,<28,55>,{52,102},103)
+sxNode(102,<82,84>,{},-1)
+sxNode(103,<30,55>,{53,104},105)
+sxNode(104,<82,84>,{},-1)
+sxNode(105,<30,55>,{106,54},107)
+sxNode(106,<82,84>,{},-1)
+sxNode(107,<22,25>,{108,45},109)
+sxNode(108,<82,84>,{},-1)
+sxNode(109,<22,25>,{110,47},111)
+sxNode(110,<82,84>,{},-1)
+sxNode(111,<22,25>,{112,49},113)
+sxNode(112,<82,84>,{},-1)
+sxNode(113,<22,25>,{51,114},115)
+sxNode(114,<82,84>,{},-1)
+sxNode(115,<18,21>,{116,107},117)
+sxNode(116,<82,84>,{},-1)
+sxNode(117,<18,21>,{118,109},119)
+sxNode(118,<82,84>,{},-1)
+sxNode(119,<18,21>,{120,111},121)
+sxNode(120,<82,84>,{},-1)
+sxNode(121,<18,21>,{113,122},123)
+sxNode(122,<82,84>,{},-1)
+sxNode(123,<14,17>,{124,115},125)
+sxNode(124,<82,84>,{},-1)
+sxNode(125,<14,17>,{117,126},127)
+sxNode(126,<82,84>,{},-1)
+sxNode(127,<14,17>,{128,119},129)
+sxNode(128,<82,84>,{},-1)
+sxNode(129,<14,17>,{121,130},131)
+sxNode(130,<82,84>,{},-1)
+sxNode(131,<10,13>,{123,132},133)
+sxNode(132,<82,84>,{},-1)
+sxNode(133,<10,13>,{125,134},135)
+sxNode(134,<82,84>,{},-1)
+sxNode(135,<10,13>,{127,136},137)
+sxNode(136,<82,84>,{},-1)
+sxNode(137,<10,13>,{129,138},139)
+sxNode(138,<82,84>,{},-1)
+sxNode(139,<6,9>,{140,131},141)
+sxNode(140,<82,84>,{},-1)
+sxNode(141,<6,9>,{133,142},143)
+sxNode(142,<82,84>,{},-1)
+sxNode(143,<6,9>,{144,135},145)
+sxNode(144,<82,84>,{},-1)
+sxNode(145,<6,9>,{137,146},147)
+sxNode(146,<82,84>,{},-1)
+sxNode(147,<0,5>,{139,148},149)
+sxNode(148,<82,84>,{},-1)
+sxNode(149,<1,5>,{141,150},151)
+sxNode(150,<82,84>,{},-1)
+sxNode(151,<2,5>,{152,143},153)
+sxNode(152,<82,84>,{},-1)
+sxNode(153,<3,5>,{154,145},155)
+sxNode(154,<82,84>,{},-1)
+sxNode(155,<28,29>,{103,156},157)
+sxNode(156,<82,84>,{},-1)
+sxNode(157,<29,29>,{158,105},-1)
+sxNode(158,<82,84>,{},-1)
+sxNode(159,<82,84>,{},-1)
+sxNode(160,<83,84>,{},-1)
+sxNode(161,<84,84>,{},-1)				
 					
 					
