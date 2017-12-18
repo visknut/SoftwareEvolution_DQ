@@ -25,6 +25,16 @@ def library_data():
     json_data = read_to_json('library')
     return str(manipulate_json(json_data))
 
+@app.route("/smallsql", methods=["GET", "POST"])
+def libary():
+    return flask.render_template('smallsql.html')
+
+
+@app.route("/smallsql_data", methods=["GET", "POST"])
+def library_data():
+    json_data = read_to_json('smallsql')
+    return str(manipulate_json(json_data))
+
 # def subprocess_cmd(command):
 #     process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
 #     proc_stdout = process.communicate()[0].strip()
