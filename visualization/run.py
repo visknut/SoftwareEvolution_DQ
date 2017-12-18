@@ -30,7 +30,7 @@ def smallsql():
 
 @app.route("/smallsql_data", methods=["GET", "POST"])
 def smallsql_data():
-    json_data = read_to_json('smallsql')
+    json_data = read_to_json('smallsql0.21_src')
     return str(manipulate_json(json_data))
 
 # def subprocess_cmd(command):

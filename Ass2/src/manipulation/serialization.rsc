@@ -10,8 +10,6 @@ import Set;
 import Node;
 import util::ValueUI;
 
-private list[&T] emptyList(type[&T] _) = [];
-
 set[Declaration] serializeAst(set[Declaration] projectAst) {
 	return traverseNodes(projectAst);
 }

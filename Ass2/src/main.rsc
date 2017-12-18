@@ -15,6 +15,7 @@ import util::loading;
 import util::jsonExporter;
 import manipulation::serialization2;
 import detection::createsuffix3;
+import tests::main_test;
 
 public loc hsqldb = |project://hsqldb-2.3.1|;
 public loc smallsql = |project://smallsql0.21_src|;
@@ -35,6 +36,10 @@ public void run_bigsql() {
 	main(bigsql);
 }
 
+public void run_tests() {
+	main_tests();
+}
+
 /* Main Function to detect duplicates and export it to json */
 public void main(loc project) {
 	str projectName = project.uri[10..];
@@ -49,7 +54,7 @@ public void main(loc project) {
 	startTime = now();
 	println("Serializing code");
 	//lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
-	//lrel[int code, value location] codeStructure = serializeAst(ast);
+	lrel[int code, value location] codeStructure = serializeAst(ast);
 	printTimeStep(startTime);
 	//for (sxnode <- codeStructure) {
 	//	println(sxnode);
@@ -65,9 +70,9 @@ public void main(loc project) {
 	//suffix = filterSuffix(suffix);
 	//suffix = getLeafLocations(codeStructure, suffix);
   
-	for (sxnode <- suffix) {
-		println(sxnode);
-	}
+	//for (sxnode <- suffix) {
+	//	println(sxnode);
+	//}
 
   	/* Export suffix tree */
   	startTime = now();
