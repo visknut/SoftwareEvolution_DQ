@@ -70,6 +70,7 @@ public void main(loc project, int tresh) {
 	suffix = getLeafLength(suffix);
 	suffix = filterSuffix(suffix, 0, treshold);
 	suffix = getLeafLocations(codeStructure, suffix);
+	suffix = reverse(suffix);
   
 	for (sxnode <- suffix) {
 		println(sxnode);
