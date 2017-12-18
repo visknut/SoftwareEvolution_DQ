@@ -25,15 +25,15 @@ public loc library = |project://Library|;
 
 /* Runners for the different projects */
 public void run_library() {
-	main(library);
+	main(library, 10);
 }
 
 public void run_smallsql() {
-	main(smallsql);
+	main(smallsql, 50);
 }
 
 public void run_bigsql() {
-	main(bigsql);
+	main(bigsql, 100);
 }
 
 public void run_tests() {
@@ -41,8 +41,9 @@ public void run_tests() {
 }
 
 /* Main Function to detect duplicates and export it to json */
-public void main(loc project) {
+public void main(loc project, int tresh) {
 	str projectName = project.uri[10..];
+	int treshold = tresh;
 
 	/* Loading */
 	startTime = now();
@@ -53,27 +54,25 @@ public void main(loc project) {
 	/* Serialization */
 	startTime = now();
 	println("Serializing code");
+	
 	//lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
 	lrel[int code, value location] codeStructure = serializeAst(ast);
 	printTimeStep(startTime);
-	//for (sxnode <- codeStructure) {
-	//	println(sxnode);
-	//}  
 
 	/* SuffixTree */
 	startTime = now();
 	println("Creating a suffix tree.");
-  	suffix = createSuffixTree([]);
+  	suffix = createSuffixTree(codeStructure);
   	printTimeStep(startTime);
-
+	/* Fill suffix tree with info for visuals. */
 	suffix = getLeafLength(suffix);
-	//suffix = filterSuffix(suffix);
-	//suffix = getLeafLocations(codeStructure, suffix);
+	suffix = filterSuffix(suffix, 0, treshold);
+	suffix = getLeafLocations(codeStructure, suffix);
   
 	//for (sxnode <- suffix) {
 	//	println(sxnode);
 	//}
-
+	
   	/* Export suffix tree */
   	startTime = now();
 	println("Export suffix tree.");

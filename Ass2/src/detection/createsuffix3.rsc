@@ -257,9 +257,14 @@ private list[SXNODE] setNodeLength(list[SXNODE] suffixTree, int nodeId, int prev
 	return suffixTree;
 }
 
-public list[SXNODE] filterSuffix(list[SXNODE] suffixTree) {
+public list[SXNODE] filterSuffix(list[SXNODE] suffixTree, int nodeId, int treshold) {
 	list[SXNODE] filteredSuffix = [];
-	
+	for (child <- suffixTree[nodeId].childeren) {
+		filteredSuffix += filterSuffix(suffixTree, child, treshold);
+	}
+	if (!(filteredSuffix == [] && suffixTree[nodeId].length < treshold)) {
+		filteredSuffix += suffixTree[nodeId];
+	}
 	return filteredSuffix;
 }
 
