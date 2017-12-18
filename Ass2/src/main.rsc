@@ -12,6 +12,7 @@ import DateTime;
 
 import util::time;
 import util::loading;
+import util::jsonExporter;
 import manipulation::serialization2;
 import manipulation::nodeFilter;
 import detection::createsuffix2;
@@ -43,9 +44,9 @@ public void main() {
   	suffix = createSuffixTree(codeStructure);
   	printTimeStep(startTime);
   
-  	println(suffix);
   	/* Export suffix tree */
   	startTime = now();
 	println("Export suffix tree.");
+	exportResult(suffix, project);
   	printTimeStep(startTime);
 }
