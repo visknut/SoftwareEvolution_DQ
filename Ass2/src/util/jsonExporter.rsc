@@ -46,6 +46,8 @@ str nodeToJson(SXNODE resultNode){
 			{
 				\"id\": \"<resultNode[0]>\",
 				\"edge\": \"<resultNode[1]>\",
-				\"children\": \"<resultNode[2]>\"
+				\"children\": \"<resultNode[2]>\",
+				\"location\": \"<resultNode[4]>\",
+				\"size\": \"<resultNode[5]>\"
 			}";
 }
