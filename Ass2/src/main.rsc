@@ -41,7 +41,7 @@ public void run_tests() {
 }
 
 /* Main Function to detect duplicates and export it to json */
-public void main(loc project, int tresh) {
+public void main(loc project, int tresh, bool typeOne) {
 	str projectName = project.uri[10..];
 	int treshold = tresh;
 
@@ -55,8 +55,8 @@ public void main(loc project, int tresh) {
 	startTime = now();
 	println("Serializing code");
 	
-	lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
-	//lrel[int code, value location] codeStructure = serializeAst(ast);
+	//lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
+	lrel[int code, value location] codeStructure = serializeAst(ast);
 	codeStructure += [<0, |empty:///|>];
 	printTimeStep(startTime);
 
@@ -72,11 +72,11 @@ public void main(loc project, int tresh) {
 	println("Filling suffix tree with info for visuals.");
 	suffix = getLeafLength(suffix);
 
-	suffix = filterSuffix(suffix, 0, 0);
+	//suffix = filterSuffix(suffix, 0, 0);
 	suffix = getLeafLocations(codeStructure, suffix);
 
-	suffix = reverse(suffix);
-	suffix = fixIds(suffix);
+	//suffix = reverse(suffix);
+	//suffix = fixIds(suffix);
 	//suffix = smoothOutEdges(suffix);
 	//suffix = getLeafLocations(codeStructure, suffix);
 	printTimeStep(startTime);

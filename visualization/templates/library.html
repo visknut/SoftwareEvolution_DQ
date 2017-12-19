@@ -32,7 +32,7 @@
         }
 
         </style>
-        <svg width="960" height="960"></svg>
+        <svg width="1200" height="960"></svg>
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <script>
 
@@ -74,7 +74,7 @@
               .attr("class", "label")
               .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
               .style("display", function(d) { return d.parent === root ? "inline" : "none"; })
-              .text(function(d) { return d.data.name; });
+              .text(function(d) { return d.data.location; });
 
           var node = g.selectAll("circle,text");
 
