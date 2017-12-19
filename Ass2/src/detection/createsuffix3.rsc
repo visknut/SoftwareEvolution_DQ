@@ -267,6 +267,29 @@ public list[SXNODE] filterSuffix(list[SXNODE] suffixTree, int nodeId, int tresho
 	return filteredSuffix;
 }
 
-    
+public list[SXNODE] fixIds(list[SXNODE] suffixTree) {
+	list[SXNODE] newSuffixTree = suffixTree;
+	for (i <- [0 .. size(suffixTree)]) {
+		for (j <-  [0 .. size(suffixTree)]) {
+			if (suffixTree[i].id in suffixTree[j].childeren) {
+				newSuffixTree[j].childeren -= {suffixTree[i].id};
+				newSuffixTree[j].childeren += {i};
+			}
+		}
+		newSuffixTree[i].id = i;
+	}
+	return newSuffixTree;
+}
 
-   
+public list[SXNODE] smoothOutEdges(list[SXNODE] suffix) {
+	for (sxnode <- suffix) {
+		if (size(sxnode.childeren) == 1) {
+			int child = getOneFrom(sxnode.childeren);
+			SXNODE childNode = suffix[child];
+			sxnode.edge.right = childNode.edge.right;
+			sxnode.length = childNode.length;
+			sxnode.childeren = {};
+			suffix = delete(suffix, child);
+		}
+	}
+}
