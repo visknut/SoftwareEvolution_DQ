@@ -25,7 +25,7 @@ public loc library = |project://Library|;
 
 /* Runners for the different projects */
 public void run_library() {
-	main(library, 10);
+	main(library, 300);
 }
 
 public void run_smallsql() {
@@ -67,10 +67,15 @@ public void main(loc project, int tresh) {
   	suffix = createSuffixTree(codeStructure);
   	printTimeStep(startTime);
 	/* Fill suffix tree with info for visuals. */
+	startTime = now();
+	println("Filling suffix tree with info for visuals.");
 	suffix = getLeafLength(suffix);
 	suffix = filterSuffix(suffix, 0, treshold);
-	suffix = getLeafLocations(codeStructure, suffix);
 	suffix = reverse(suffix);
+	suffix = fixIds(suffix);
+	//suffix = smoothOutEdges(suffix);
+	//suffix = getLeafLocations(codeStructure, suffix);
+	printTimeStep(startTime);
   
 	for (sxnode <- suffix) {
 		println(sxnode);
