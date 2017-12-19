@@ -42,7 +42,7 @@ public void run_tests() {
 }
 
 /* Main Function to detect duplicates and export it to json */
-public void main(loc project, int tresh) {
+public void main(loc project, int tresh, bool typeOne) {
 	str projectName = project.uri[10..];
 	int treshold = tresh;
 
@@ -78,6 +78,7 @@ public void main(loc project, int tresh) {
 	println("Filling suffix tree with info for visuals.");
 	suffix = getLeafLength(suffix);
 	suffix = filterSuffix(suffix, treshold);
+
 	//suffix = reverse(suffix);
 	//suffix = fixIds(suffix);
 	//suffix = smoothOutEdges(suffix);
