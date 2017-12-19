@@ -19,7 +19,7 @@ todo
 Assignment 2:
 
 - Import the SmallSQL/BigSQL/Library as project in eclipse
-- run main (Currently needs to be run before having input for visualization)
+- run runner in main for corresponding project (Currently needs to be run before having input for visualization)
 
 Visualization:
 
