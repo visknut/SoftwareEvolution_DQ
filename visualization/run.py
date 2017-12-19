@@ -2,6 +2,7 @@ import flask
 import numpy as np
 import subprocess
 import os
+import json
 
 from util.parse_json import *
 
@@ -33,10 +34,16 @@ def smallsql_data():
     json_data = read_to_json('smallsql0.21_src')
     return manipulate_json(json_data)
 
-# def subprocess_cmd(command):
-#     process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
-#     proc_stdout = process.communicate()[0].strip()
-#     return proc_stdout
+# Example of the Visualization wanting to implement
+
+@app.route("/test", methods=["GET", "POST"])
+def test():
+    return flask.render_template('test.html')
+
+@app.route("/test_data", methods=["GET", "POST"])
+def test_data():
+    json_file = json.load(open('flare.json'))
+    return json.dumps(json_file)
 
 if __name__ == "__main__":
 
