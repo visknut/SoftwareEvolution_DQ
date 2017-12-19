@@ -15,6 +15,7 @@ import util::loading;
 import util::jsonExporter;
 import manipulation::serialization2;
 import detection::createsuffix3;
+import detection::fillsuffix;
 //import tests::main_test;
 
 public loc hsqldb = |project://hsqldb-2.3.1|;
@@ -25,11 +26,11 @@ public loc library = |project://Library|;
 
 /* Runners for the different projects */
 public void run_library() {
-	main(library, 300);
+	main(library, 2000);
 }
 
 public void run_smallsql() {
-	main(smallsql, 50);
+	main(smallsql, 50000);
 }
 
 public void run_bigsql() {
@@ -60,7 +61,7 @@ public void main(loc project, int tresh) {
 	codeStructure += [<0, |empty:///|>];
 	printTimeStep(startTime);
 
-	println(codeStructure);
+	println(size(codeStructure));
 	
 	/* SuffixTree */
 	startTime = now();
@@ -69,18 +70,23 @@ public void main(loc project, int tresh) {
   	printTimeStep(startTime);
 	/* Fill suffix tree with info for visuals. */
 	startTime = now();
-	println("Filling suffix tree with info for visuals.");
-	suffix = getLeafLength(suffix);
-	suffix = filterSuffix(suffix, 0, treshold);
-	suffix = reverse(suffix);
-	suffix = fixIds(suffix);
-	//suffix = smoothOutEdges(suffix);
-	//suffix = getLeafLocations(codeStructure, suffix);
-	printTimeStep(startTime);
-  
+	
 	for (sxnode <- suffix) {
 		println(sxnode);
 	}
+	
+	println("Filling suffix tree with info for visuals.");
+	suffix = getLeafLength(suffix);
+	suffix = filterSuffix(suffix, treshold);
+	//suffix = reverse(suffix);
+	//suffix = fixIds(suffix);
+	//suffix = smoothOutEdges(suffix);
+	suffix = getLeafLocations(codeStructure, suffix);
+	printTimeStep(startTime);
+  
+	//for (sxnode <- suffix) {
+	//	println(sxnode);
+	//}
 	
   	/* Export suffix tree */
   	startTime = now();
