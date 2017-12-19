@@ -22,7 +22,7 @@ def libary():
 @app.route("/library_data", methods=["GET", "POST"])
 def library_data():
     json_data = read_to_json('library')
-    return str(manipulate_json(json_data))
+    return manipulate_json(json_data)
 
 @app.route("/smallsql", methods=["GET", "POST"])
 def smallsql():
@@ -31,7 +31,7 @@ def smallsql():
 @app.route("/smallsql_data", methods=["GET", "POST"])
 def smallsql_data():
     json_data = read_to_json('smallsql0.21_src')
-    return str(manipulate_json(json_data))
+    return manipulate_json(json_data)
 
 # def subprocess_cmd(command):
 #     process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)

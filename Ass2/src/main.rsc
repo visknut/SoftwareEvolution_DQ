@@ -15,7 +15,7 @@ import util::loading;
 import util::jsonExporter;
 import manipulation::serialization2;
 import detection::createsuffix3;
-import tests::main_test;
+//import tests::main_test;
 
 public loc hsqldb = |project://hsqldb-2.3.1|;
 public loc smallsql = |project://smallsql0.21_src|;
@@ -54,6 +54,7 @@ public void main(loc project, int tresh) {
 	/* Serialization */
 	startTime = now();
 	println("Serializing code");
+	
 	//lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
 	lrel[int code, value location] codeStructure = serializeAst(ast);
 	codeStructure += [<0, |empty:///|>];
