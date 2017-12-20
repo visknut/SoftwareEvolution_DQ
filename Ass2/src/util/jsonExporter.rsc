@@ -38,7 +38,6 @@ void exportResult(list[SXNODE] suffixTree, loc project, str projectName){
 	}";
 	
 	writeFile(outputLoc, jsonResult);
-	//println(resolveLocation(outputLoc));
 }
 
 str nodeToJson(SXNODE resultNode){

@@ -23,7 +23,6 @@ public list[SXNODE] getLeafLocations(lrel[int code, value location] codeStructur
 
 private value getLocation(lrel[int code, value location] codeStructure, SXNODE sxnode) {
 	int locationId = sxnode.edge.left;
-	println(sxnode);
 	value ll = codeStructure[locationId].location;
 	return ll;
 }

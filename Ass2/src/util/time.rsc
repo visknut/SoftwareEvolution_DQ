@@ -6,16 +6,15 @@ import DateTime;
 /* Print how long a step took */
 public void printTimeStep(datetime startTime) {
 	print("This step took: ");
-	if ((now() - startTime).hours > 0) {
-		print((now() - startTime).hours);
-		print("h");
-	}
-	if ((now() - startTime).minutes > 0) {
-		print((now() - startTime).minutes);
+	current = now();
+	difference = current-startTime;
+	
+	if (difference.minutes > 0) {
+		print(difference.minutes);
 		print("m");
 	}
-	print((now() - startTime).seconds);
+	print(difference.seconds);
 	print("s");
-	print((now() - startTime).milliseconds);
+	print(difference.milliseconds);
 	println("ms.\n");
 }

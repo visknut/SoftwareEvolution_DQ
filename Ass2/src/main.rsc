@@ -14,27 +14,25 @@ import util::time;
 import util::loading;
 import util::jsonExporter;
 import manipulation::serialization2;
-import detection::createsuffix3;
+import detection::createsuffix;
 import detection::fillsuffix;
 //import tests::main_test;
 
-public loc hsqldb = |project://hsqldb-2.3.1|;
-public loc smallsql = |project://smallsql0.21_src|;
-public loc bigsql = |project://SQLBig|;
-public loc smallsql2 = |project://smallsql|;
+public loc smallsql = |project://smallsql|;
+public loc bigsql = |project://bigsql|;
 public loc library = |project://Library|;
 
 /* Runners for the different projects */
-public void run_library() {
-	main(library, 2000);
+public void run_library(int duplicationType) {
+	main(library, 2000, duplicationType);
 }
 
-public void run_smallsql() {
-	main(smallsql, 50000);
+public void run_smallsql(int duplicationType) {
+	main(smallsql, 50000, duplicationType);
 }
 
-public void run_bigsql() {
-	main(bigsql, 100);
+public void run_bigsql(int duplicationType) {
+	main(bigsql, 100, duplicationType);
 }
 
 public void run_tests() {
@@ -42,9 +40,8 @@ public void run_tests() {
 }
 
 /* Main Function to detect duplicates and export it to json */
-public void main(loc project, int tresh, bool typeOne) {
+public void main(loc project, int treshold, int duplicationType) {
 	str projectName = project.uri[10..];
-	int treshold = tresh;
 
 	/* Loading */
 	startTime = now();
@@ -55,14 +52,12 @@ public void main(loc project, int tresh, bool typeOne) {
 	/* Serialization */
 	startTime = now();
 	println("Serializing code");
+	lrel[int code, value location] codeStructure = serializeAst(ast);
+	text(codeStructure);
+	printTimeStep(startTime);
 	
 	//lrel[int code, value location] codeStructure = serializeAst(initAstFile(|project://Ass2/tests/testFile.java|));
-	lrel[int code, value location] codeStructure = serializeAst(ast);
-	codeStructure += [<0, |empty:///|>];
-	printTimeStep(startTime);
 
-	println(size(codeStructure));
-	
 	/* SuffixTree */
 	startTime = now();
 	println("Creating a suffix tree.");
@@ -71,10 +66,7 @@ public void main(loc project, int tresh, bool typeOne) {
 	/* Fill suffix tree with info for visuals. */
 	startTime = now();
 	
-	for (sxnode <- suffix) {
-		println(sxnode);
-	}
-	
+	/* Add suffixTree visualization info */
 	println("Filling suffix tree with info for visuals.");
 	suffix = getLeafLength(suffix);
 	suffix = filterSuffix(suffix, treshold);
@@ -84,10 +76,6 @@ public void main(loc project, int tresh, bool typeOne) {
 	//suffix = smoothOutEdges(suffix);
 	suffix = getLeafLocations(codeStructure, suffix);
 	printTimeStep(startTime);
-  
-	//for (sxnode <- suffix) {
-	//	println(sxnode);
-	//}
 	
   	/* Export suffix tree */
   	startTime = now();
