@@ -2,6 +2,8 @@
 import json
 import ast
 
+c = 'children'
+
 def read_to_json(project):
     with open('/tmp/software_evolution_DQ/'+project+'.json') as f:
         data = f.read()
@@ -21,11 +23,10 @@ def manipulate_json(json_data):
                                 dicts_by_id,
                                 name)
 
-    # result_json['children'] = [elem for elem in result_json['children'] if elem['size'] > 1000]
+    result_json[c] = [elem for elem in result_json[c] if c in elem.keys()]
     return json.dumps(result_json)
 
 def fill_children(id_children, result_json, dicts_by_id, name):
-    c = 'children'
     result_json["name"] = name
     result_json[c] = []
     counter = -1
@@ -41,11 +42,14 @@ def fill_children(id_children, result_json, dicts_by_id, name):
             result_json[c].append(dicts_by_id[x])
             nxt_result_json = result_json[c][counter]
             nxt_result_json['name'] = nxt_result_json['id']
-            if nxt_result_json['location'] != "|empty:///|":
-                nxt_result_json['location'] = nxt_result_json['location'].split('://')[1]
-            else:
+            if nxt_result_json['location'] == "|empty:///|" or nxt_result_json['location'] == "|unknown:///|":
                 nxt_result_json['location'] = nxt_result_json['size']
-            x = [fill_children(nxt_result_json[c][1:-1].split(','),
+            else:
+                nxt_result_json['location'] = nxt_result_json['location'].split('://')[1]
+
+            print nxt_result_json['location']
+
+            recursion = [fill_children(nxt_result_json[c][1:-1].split(','),
                                nxt_result_json,
                                dicts_by_id,
                                str(nxt_result_json['id'])

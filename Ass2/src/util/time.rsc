@@ -7,14 +7,14 @@ import DateTime;
 public void printTimeStep(datetime startTime) {
 	print("This step took: ");
 	current = now();
-	difference = current-startTime;
+	timeDiff = current-startTime;
 	
-	if (difference.minutes > 0) {
-		print(difference.minutes);
+	if (timeDiff.minutes > 0) {
+		print(timeDiff.minutes);
 		print("m");
 	}
-	print(difference.seconds);
+	print(timeDiff.seconds);
 	print("s");
-	print(difference.milliseconds);
+	print(timeDiff.milliseconds);
 	println("ms.\n");
 }

@@ -33,8 +33,7 @@ void exportResult(list[SXNODE] suffixTree, loc project, str projectName){
 			\"name\": \"<projectName>\",
 			\"location\": \"<project>\"
 		},
-		\"suffixTree\": [<duplicateResult>}],
-		\"mapping\": \"<project>\"
+		\"suffixTree\": [<duplicateResult>}]
 	}";
 	
 	writeFile(outputLoc, jsonResult);
@@ -44,7 +43,6 @@ str nodeToJson(SXNODE resultNode){
 	return "		
 			{
 				\"id\": \"<resultNode[0]>\",
-				\"edge\": \"<resultNode[1]>\",
 				\"children\": \"<resultNode[2]>\",
 				\"location\": \"<resultNode[4]>\",
 				\"size\": <resultNode[5]>

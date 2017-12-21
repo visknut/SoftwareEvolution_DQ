@@ -31,7 +31,7 @@ def smallsql():
 
 @app.route("/smallsql_data", methods=["GET", "POST"])
 def smallsql_data():
-    json_data = read_to_json('smallsql0.21_src')
+    json_data = read_to_json('smallsql')
     return manipulate_json(json_data)
 
 # Example of the Visualization wanting to implement
